@@ -1,0 +1,45 @@
+.hero-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.hero-left {
+    flex: 2;
+    padding: 20px;
+}
+  
+.hero-right {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+  
+.hero-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+  
+.hero-description {
+    font-size: 16px;
+    color: #888;
+}
+  
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+  
+  /* Media Query for Mobile */
+@media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column;
+    }
+  
+    .hero-left,
+    .hero-right {
+      flex: 1;
+    }
+}
