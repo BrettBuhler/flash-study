@@ -2,24 +2,28 @@ import React from 'react'
 import {useState} from 'react'
 import '../styles/FlashCard.css'
 
+
+type Card = {
+  question: string;
+  answer: string;
+  tries: number[];
+  lastTry?: Date; // Optional property using "?"
+  easy: () => void;
+  medium: () => void;
+  hard: () => void;
+};
+
 interface FlashCardProps {
-  flashCard: {
-    question: string;
-    answer: string;
-    tries: number[];
-    easy: () => void;
-    medium: () => void;
-    hard: () => void;
-  }
+  flashCard: Card
   nextCard: () => void
 }
 
 const FlashCard: React.FC<FlashCardProps> = ({ flashCard, nextCard }) => {
-  const { question, answer, tries, easy, medium, hard } = flashCard;
   const [flipped, setFlipped] = useState(false);
 
   const flipCard = () => {
     setFlipped(true)
+    console.log(flashCard.lastTry)
   };
 
   const handleDifficultyRating = (level: number) => {
@@ -34,7 +38,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ flashCard, nextCard }) => {
             flashCard.easy()
             break
         default:
-            console.error('handleDifficultyRatingError')
+            console.error('handleDifficultyRating(level): Error (Input must be 0, 1, or 2)')
             break
     }
     nextCard()
@@ -44,15 +48,15 @@ const FlashCard: React.FC<FlashCardProps> = ({ flashCard, nextCard }) => {
   return (
     <div className={`flash-card ${flipped ? 'flipped' : ''}`}>
       <div className="front">
-        <h3>Question</h3>
-        <p>{question}</p>
+        <h3 className='flash-card-h3'>Question</h3>
+        <p className='flash-card-p'>{flashCard.question}</p>
         <button className="flip-button" onClick={flipCard}>
           Flip
         </button>
       </div>
       <div className="back">
-        <h3>Answer</h3>
-        <p>{answer}</p>
+        <h3 className='flash-card-h3'>Answer</h3>
+        <p className='flash-card-p'>{flashCard.answer}</p>
         <div className="difficulty-buttons">
           <button
             className='difficulty-button'

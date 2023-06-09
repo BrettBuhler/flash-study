@@ -4,11 +4,11 @@ class Card {
     tries: number[]
     lastTry: Date
 
-    constructor(question: string, answer: string, tries: number[] = [0,0,0]){
+    constructor(question: string, answer: string, tries: number[] = [0,0,0], lastTry: Date = new Date()){
         this.question = question
         this.answer = answer
         this.tries = tries
-        this.lastTry = new Date ()
+        this.lastTry = lastTry
     }
 
     private setTrys (difficulty: number): void {

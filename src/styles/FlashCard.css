@@ -1,9 +1,10 @@
 .flash-card {
-    width: 300px;
-    height: 200px;
-    border: 1px solid #ccc;
+    width: 30vw;
+    min-width: 300px;
+    height: 20vw;
+    min-height: 150px;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: auto;
     perspective: 1000px;
   }
   
@@ -18,6 +19,8 @@
     box-sizing: border-box;
     transition: transform 0.3s ease;
     backface-visibility: hidden;
+    border: 2px solid black;
+    border-radius: 8px;
   }
   
   .front {
@@ -37,23 +40,6 @@
     transform: rotateY(0deg);
   }
   
-  h3 {
-    margin-top: 0;
-  }
-  
-  button {
-    display: inline-block;
-    padding: 8px 16px;
-    margin-right: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
   
   button.flip-button {
     background-color: #6c757d;
