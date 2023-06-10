@@ -74,7 +74,7 @@ const flashCards: FlashCard[] = [
 ]
 
 for (let i = 0; i < flashCards.length; i++){
-    let newCard = new Card(flashCards[i].question, flashCards[i].answer, flashCards[i].tries, flashCards[i].lastTry)
+    let newCard = new Card(flashCards[i].question, flashCards[i].answer)
     landingPageDeck.push(newCard)
 }
 

@@ -4,13 +4,13 @@ import '../styles/FlashCard.css'
 
 
 type Card = {
-  question: string;
-  answer: string;
-  tries: number[];
-  lastTry?: Date; // Optional property using "?"
-  easy: () => void;
-  medium: () => void;
-  hard: () => void;
+  question: string
+  answer: string
+  tries?: number[]
+  lastTry?: Date
+  easy: () => void
+  medium: () => void
+  hard: () => void
 };
 
 interface FlashCardProps {
