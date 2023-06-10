@@ -5,6 +5,8 @@ import { Routes, Route, RouteProps } from 'react-router-dom'
 
 import '../styles/index.css'
 import LogIn from './LogIn'
+import SignUp from './SignUp'
+import AddDeck from './AddDeck'
 
 
 const App = () => {
@@ -25,6 +27,16 @@ const App = () => {
         <Route path='/login'
           element = {
             <LogIn setUser={setUser}/>
+          }
+        />
+        <Route path='/signup'
+          element = {
+            <SignUp setUser={setUser}/>
+          }
+        />
+        <Route path='/add-deck'
+          element = {
+            <AddDeck user={user} setUser={setUser} />
           }
         />
       </Routes>

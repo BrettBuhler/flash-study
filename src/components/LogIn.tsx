@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import ErrorPopup from './ErrorPopup'
-
+import { useNavigate } from 'react-router'
 interface LogInProps {
     setUser: React.Dispatch<React.SetStateAction<{}>>
 }
@@ -11,6 +11,7 @@ const LogIn:React.FC<LogInProps> = ({setUser}) => {
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const navigate = useNavigate()
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -20,13 +21,18 @@ const LogIn:React.FC<LogInProps> = ({setUser}) => {
     setPassword(e.target.value)
   }
 
+  const handleHome = () => {
+    navigate('/')
+  }
+
   const handleLogin = async () => {
     try{
-        const response = await axios.post('http://localhost:5000/api/login', {email: email, password: password})
+        //change to /api/login before sending build to production: http://localhost:5000/api/login
+        const response = await axios.post('/api/login', {email: email, password: password})
         console.log(response.data)
         if (response.data.user){
             setUser(response.data.user)
-            window.location.href = '/dashboard'
+            navigate('/dashboard')
         } else {
             setLoginError(true)
             setErrorMessage('Invalid Email or Password')
@@ -69,6 +75,9 @@ const LogIn:React.FC<LogInProps> = ({setUser}) => {
         />
         <button type="button" className="login-button" onClick={handleLogin}>
           Log In
+        </button>
+        <button type="button" className="home-button" onClick={handleHome}>
+            Home
         </button>
       </form>
     </div>
