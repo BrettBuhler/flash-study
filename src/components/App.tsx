@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LandingPage from './LandingPage'
 import Dashboard from './Dashboard'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, RouteProps } from 'react-router-dom'
 
 import '../styles/index.css'
+import LogIn from './LogIn'
 
 
 const App = () => {
+
+  const [user, setUser] = useState({})
 
   const secret = process.env.REACT_APP_SECRET
 
@@ -14,7 +17,16 @@ const App = () => {
     <div>
       <Routes>
         <Route path='/' Component={LandingPage} />
-        <Route path='/dashboard' Component={Dashboard} />
+        <Route path='/dashboard'
+          element = {
+            <Dashboard user={user} setUser={setUser} />
+          }
+        />
+        <Route path='/login'
+          element = {
+            <LogIn setUser={setUser}/>
+          }
+        />
       </Routes>
     </div>
   )

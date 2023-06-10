@@ -17,7 +17,7 @@ const LandingPage = () => {
 
     return (
         <section className='landing-page-section'>
-            <Header title='Flash Study' tagline='Flash Study: Unleash Your Learning Potential with AI-Powered Flashcards!' imageUrl={flashCardImage}/>
+            <Header/>
             <LandingPageHero />
             <FlashCard flashCard={display.deck[deckIndex]} nextCard={handleNextCard}/>
         </section>

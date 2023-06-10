@@ -1,7 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 
-const Dashboard = ({}) => {
+interface DashboardProps {
+    user: object
+    setUser: React.Dispatch<React.SetStateAction<{}>>
+}
+
+
+const Dashboard: React.FC<DashboardProps> = ({ user, setUser}) => {
     const testLogout = async () => {
             try {
                 const response = await axios.get('/api/logout')
