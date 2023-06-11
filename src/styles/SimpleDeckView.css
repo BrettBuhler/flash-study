@@ -1,0 +1,81 @@
+.simple-deck-container{
+    display: flex;
+}
+
+.simple-deck-item-container{
+    padding: 10px;
+    border: 2px solid black;
+}
+
+.simple-card{
+    border: 2px solid black;
+    height: 100px;
+    width: 150px;
+    border-radius: 5px;
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+}
+
+.simple-deck-item-button-container{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.red-line{
+    height: 100%;
+    width: 2px;
+    background-color: red;
+    position: absolute;
+    top: 0px;
+    left: 15%;
+}
+
+.blue-line-1{
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 10%;
+    background-color: blue;
+}
+
+.blue-line-2{
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 30%;
+    background-color: blue;
+}
+
+.blue-line-3{
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 50%;
+    background-color: blue;
+}
+
+.blue-line-4{
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 70%;
+    background-color: blue;
+}
+
+.blue-line-5{
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 90%;
+    background-color: blue;
+}
+
+.simple-text{
+    z-index: 99;
+    font-weight: bold;
+    margin-left: 17%;
+    margin-right: 5%;
+    margin-top: 10%;
+}

@@ -30,21 +30,9 @@ const Dashboard: React.FC<DashboardProps> = ({ user, setUser}) => {
             console.error(error)
         }
     }
-
-    const testLogout = async () => {
-            try {
-                const response = await axios.get('/api/logout')
-                console.log(response.status)
-                setUser({})
-                window.location.href = '/'
-            } catch (error) {
-                console.error(error)
-            }
-    }
     return (
         <div>
             <TopBar user={user} setUser={setUser}/>
-            <button onClick={testLogout}>Logout</button>
             <div>
                 <p>{user.email}</p>
             </div>

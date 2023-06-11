@@ -1,11 +1,4 @@
-interface Card {
-    question: string
-    answer: string
-    tries: number[]
-    easy: () => void;
-    medium: () => void
-    hard: () => void
-}
+import Card from "./Card"
 
 class Deck {
     name: string
@@ -16,7 +9,9 @@ class Deck {
         this.deck = deck
     }
 
-    
+    addCard (card: Card) {
+        this.deck.push(card)
+    }
 }
 
 export default Deck

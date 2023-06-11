@@ -28,7 +28,7 @@ const LogIn:React.FC<LogInProps> = ({setUser}) => {
   const handleLogin = async () => {
     try{
         //change to /api/login before sending build to production: http://localhost:5000/api/login
-        const response = await axios.post('/api/login', {email: email, password: password})
+        const response = await axios.post('http://localhost:5000/api/login', {email: email, password: password})
         console.log(response.data)
         if (response.data.user){
             setUser(response.data.user)

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/TopBar.css';
 import SideBar from './SideBar';
+import axios from 'axios';
 
 interface TopBarProps {
   user: any;
@@ -14,10 +15,16 @@ const TopBar: React.FC<TopBarProps> = ({ user, setUser }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleLogout = () => {
-    // Handle logout logic here
-    setUser({});
-  };
+  const handleLogout = async () => {
+    try {
+        const response = await axios.get('/api/logout')
+        console.log(response.status)
+        setUser({})
+        window.location.href = '/'
+    } catch (error) {
+        console.error(error)
+    }
+}
 
   return (
     <div className="topbar-container">

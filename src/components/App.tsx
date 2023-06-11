@@ -7,6 +7,7 @@ import '../styles/index.css'
 import LogIn from './LogIn'
 import SignUp from './SignUp'
 import AddDeck from './AddDeck'
+import AddDeckManual from './AddDeckManual'
 
 
 const App = () => {
@@ -37,6 +38,11 @@ const App = () => {
         <Route path='/add-deck'
           element = {
             <AddDeck user={user} setUser={setUser} />
+          }
+        />
+        <Route path='/add-deck/manual'
+          element = {
+            <AddDeckManual user={user} setUser={setUser} />
           }
         />
       </Routes>

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-
-import TopBar from './TopBar';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import TopBar from './TopBar'
 
 interface AddDeckProps {
   setUser: React.Dispatch<React.SetStateAction<{}>>
@@ -16,6 +16,8 @@ enum AddDeckOption {
 const AddDeck: React.FC<AddDeckProps> = ({ user, setUser }) => {
   const [selectedOption, setSelectedOption] = useState<AddDeckOption | null>(null);
 
+  const navigate = useNavigate()
+
   const handleOptionSelect = (option: AddDeckOption) => {
     setSelectedOption(option);
   };
@@ -27,7 +29,7 @@ const AddDeck: React.FC<AddDeckProps> = ({ user, setUser }) => {
     } else if (selectedOption === AddDeckOption.Text) {
       // Add deck from text
     } else if (selectedOption === AddDeckOption.Manual) {
-      // Add deck manually
+      navigate('/add-deck/manual')
     } else {
       // No option selected
     }
