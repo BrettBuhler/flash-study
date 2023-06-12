@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import LandingPage from './LandingPage'
 import Dashboard from './Dashboard'
-import { Routes, Route, RouteProps } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import '../styles/index.css'
+
 import LogIn from './LogIn'
 import SignUp from './SignUp'
 import AddDeck from './AddDeck'
 import AddDeckManual from './AddDeckManual'
+import EditDecks from './EditDecks'
 
 
 const App = () => {
-
   const [user, setUser] = useState({})
-
   const secret = process.env.REACT_APP_SECRET
 
   return (
@@ -43,6 +43,11 @@ const App = () => {
         <Route path='/add-deck/manual'
           element = {
             <AddDeckManual user={user} setUser={setUser} />
+          }
+        />
+        <Route path='/edit-decks'
+          element = {
+              <EditDecks user={user} setUser={setUser}/>
           }
         />
       </Routes>

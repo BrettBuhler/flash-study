@@ -46,6 +46,14 @@ const EditCardPopup: React.FC<EditCardPopupProps> = ({front, setFront, back, set
         setEditDeck(false)
     }
 
+    const handleBack = () => {
+        setFront('')
+        setBack('')
+        setNewBack('')
+        setNewFront('')
+        setEditDeck(false)
+    }
+
     if (!editDeck){
         return null
     }
@@ -65,7 +73,7 @@ const EditCardPopup: React.FC<EditCardPopupProps> = ({front, setFront, back, set
                 </div>
                 <div className='edit-card-popup-buttons'>
                     <button className='edit-card-popup-button' onClick={handleSave}>Save</button>
-                    <button className='edit-card-popup-button'>Back</button>
+                    <button className='edit-card-popup-button' onClick={handleBack}>Back</button>
                 </div>
             </div>
         </div>

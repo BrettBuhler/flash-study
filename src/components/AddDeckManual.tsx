@@ -4,8 +4,11 @@ import TopBar from './TopBar'
 import Deck from '../classes/Deck'
 import ErrorPopup from './ErrorPopup'
 import SimpleDeckView from './SimpleDeckView'
+import SuccessAndFailPopUp from './SuccessAndFailPopUp'
 import '../styles/AddDeckManual.css'
 import axios from 'axios'
+import cardGen from '../services/cardGen'
+import deckGen from '../services/deckGen'
 
 interface AddDeckManualProps {
     user: any
@@ -20,6 +23,8 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
     const [tempDeck, setTempDeck] = useState<string[][]>([])
     const [nameError, setNameError] = useState(false)
     const [nameMessage, setNameMessage] = useState('')
+    const [success, setSuccess] = useState(false)
+    const [fail, setFail] = useState(false)
     const navigate = useNavigate()
 
 
@@ -31,16 +36,19 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
 
     const handleCreateDeck = () => {
         let names = user.decks
+        let triger = false
         names.map((x: Deck) => {
             if (x.name === inputValue){
                 setNameError(true)
-                setNameMessage(`A deck named ${deckName} already exists, pick a different name.`)
+                setNameMessage(`A deck named ${inputValue} already exists, pick a different name.`)
                 setInputValue('')
-                return
+                triger = true
             }
         })
-        setDeckName(inputValue)
-        setInputValue('')
+        if (!triger){
+            setDeckName(inputValue)
+            setInputValue('')
+        }
     }
 
     const handleFrontChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -68,9 +76,42 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
         }
     }
 
+    const handleCreateRequest = async () => {
+        let deckArray = []
+        for (let i = 0; i < tempDeck.length; i++){
+            deckArray.push(cardGen(tempDeck[i][0], tempDeck[i][1]))
+        }
+        let newDeck = deckGen(deckName, deckArray)
+        console.log(newDeck)
+        const _id = user._id
+        const name = newDeck.name
+        const cards = newDeck.deck.map(item=>{
+            return {
+                question: item.question,
+                answer: item.answer,
+                tries: item.tries,
+                lastTry: item.lastTry
+            }
+        })
+        //Change to /api/add before production build: http://localhost:5000/api/add
+        try {
+            const response = await axios.post('http://localhost:5000/api/add', {_id, name, cards})
+            if (response.data.user){
+                setUser(response.data.user)
+                setSuccess(true)
+            } else {
+                setFail(true)
+            }
+        } catch (error) {
+            console.error(error)
+            setFail(true)
+        }
+    }
+
     return (
         <div className='add-deck-manual-main'>
             <TopBar user={user} setUser={setUser} />
+            <SuccessAndFailPopUp setSuccess={setSuccess} success={success} fail={fail} setFail={setFail} name={deckName}/>
             <ErrorPopup setError={setNameError} error={nameError} errorMessage={nameMessage} setErrorMessage={setNameMessage}/>
             {deckName === '' && (
                 <div className = 'deck-name-popup-background'>
@@ -99,7 +140,7 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
                 </div>
                 <div className='add-deck-input-buttons'>
                     <button className='add-deck-input-button' onClick={handleAdd}>Add</button>
-                    <button className='add-deck-input-button' onClick={()=>console.log(user.decks.length === 0)}>Create Deck</button>
+                    <button className='add-deck-input-button' onClick={handleCreateRequest}>Create Deck</button>
                     <button className='add-deck-input-button' onClick={()=>navigate('/dashboard')}>Back</button>
                 </div>
             </div>
