@@ -8,9 +8,10 @@ interface SuccessAndFailPopUpProps {
     fail: boolean
     setFail: React.Dispatch<React.SetStateAction<boolean>>
     name: string
+    message?: string
 }
 
-const SuccessAndFailPopUp: React.FC<SuccessAndFailPopUpProps> = ({success, setSuccess, fail, setFail, name}) => {
+const SuccessAndFailPopUp: React.FC<SuccessAndFailPopUpProps> = ({success, setSuccess, fail, setFail, name, message}) => {
 
     const navigate = useNavigate()
 
@@ -24,7 +25,7 @@ const SuccessAndFailPopUp: React.FC<SuccessAndFailPopUpProps> = ({success, setSu
         return (
             <div className="saf-background">
                 <div className="saf-container">
-                    <p className="saf-message">{`Successfully added a new Deck under ${name}. Click continue to return to the Dashboard`}</p>
+                    <p className="saf-message">{message ? `${message}`: `Successfully added a new Deck under ${name}. Click continue to return to the Dashboard`}</p>
                     <button className="saf-button" onClick={handleClick}>Continue</button>
                 </div>
             </div>
