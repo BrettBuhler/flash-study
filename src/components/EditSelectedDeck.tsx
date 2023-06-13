@@ -6,6 +6,7 @@ import axios from 'axios'
 import EditStatusPopup from "./EditStatusPopup"
 import EditAddDeckManual from './EditAddDeckManual'
 import EditSimpleDeckView from "./EditSimpleDeckView"
+import MergeDeck from "./MergeDecks"
 
 interface EditSelectedDeckProps {
     user: any
@@ -78,7 +79,7 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
         case 4:
             return (
                 <div className="edit-selected-deck-4">
-    
+                    <MergeDeck user={user} setUser={setUser} deck={deck} />
                 </div>
             )
         case 5:
