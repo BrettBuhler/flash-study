@@ -1,10 +1,11 @@
 import Deck from "../classes/Deck"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 
 import EditStatusPopup from "./EditStatusPopup"
 import EditAddDeckManual from './EditAddDeckManual'
+import EditSimpleDeckView from "./EditSimpleDeckView"
 
 interface EditSelectedDeckProps {
     user: any
@@ -13,12 +14,12 @@ interface EditSelectedDeckProps {
 }
 
 const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}) => {
-    const [tempDeck, setTempDeck] = useState(deck)
     const [route, setRoute] = useState(0)
     const [popup, setPopup] = useState(false)
     const [popupMessage, setPopupMessage] = useState('')
     const [success, setSuccess] = useState(true)
     const navigate = useNavigate()
+
 
     const handleClick = (n: number) => {
         setRoute(n)
@@ -81,9 +82,15 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
                 </div>
             )
         case 5:
+
+            const handleUpdateRequest = async () => {
+              
+            }
+
             return (
                 <div className="edit-selected-deck-5">
-    
+                    <h2 className="edit-selected-deck-h2">Edit cards from {deck.name}</h2>
+                    <EditSimpleDeckView user={user} setUser={setUser} deck={deck}/>
                 </div>
             )
         case 6:
