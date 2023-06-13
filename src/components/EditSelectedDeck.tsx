@@ -90,7 +90,7 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
             return (
                 <div className="edit-selected-deck-5">
                     <h2 className="edit-selected-deck-h2">Edit cards from {deck.name}</h2>
-                    <EditSimpleDeckView user={user} setUser={setUser} deck={deck}/>
+                    <EditSimpleDeckView user={user} setUser={setUser} deck={deck} setRoute={setRoute}/>
                 </div>
             )
         case 6:
