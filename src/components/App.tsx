@@ -10,6 +10,7 @@ import SignUp from './SignUp'
 import AddDeck from './AddDeck'
 import AddDeckManual from './AddDeckManual'
 import EditDecks from './EditDecks'
+import AddCardsFromTextAndAIBase from './AddCardsFromTextAndAIBase'
 
 
 const App = () => {
@@ -43,6 +44,16 @@ const App = () => {
         <Route path='/add-deck/manual'
           element = {
             <AddDeckManual user={user} setUser={setUser} />
+          }
+        />
+        <Route path='/add-deck/text'
+          element = {
+            <AddCardsFromTextAndAIBase user={user} setUser={setUser} route={'text'}/>
+          }
+        />
+        <Route path='/add-deck/ai'
+          element = {
+            <AddCardsFromTextAndAIBase user={user} setUser={setUser} route={'ai'}/>
           }
         />
         <Route path='/edit-decks'

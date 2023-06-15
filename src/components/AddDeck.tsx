@@ -25,13 +25,13 @@ const AddDeck: React.FC<AddDeckProps> = ({ user, setUser }) => {
   const handleAddDeck = () => {
     // Handle adding the deck based on the selected option
     if (selectedOption === AddDeckOption.AI) {
-      // Add deck with AI
+      navigate('/add-deck/ai')
     } else if (selectedOption === AddDeckOption.Text) {
-      // Add deck from text
+      navigate('/add-deck/text')
     } else if (selectedOption === AddDeckOption.Manual) {
       navigate('/add-deck/manual')
     } else {
-      // No option selected
+      console.error(`selectedOption: ${selectedOption} should equal AI, TEXT, or MANUAL`)
     }
   };
 
