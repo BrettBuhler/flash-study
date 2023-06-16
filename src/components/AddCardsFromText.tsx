@@ -5,6 +5,7 @@ import axios from "axios"
 
 import SimpleDeckView from "./SimpleDeckView"
 import SuccessAndFailPopUp from "./SuccessAndFailPopUp"
+import LoadingCircle from "./LoadingCircle"
 
 interface AddCardsFromTextProps {
     user: any
@@ -20,6 +21,7 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck}
     const [success, setSuccess] = useState<boolean>(false)
     const [fail, setFail] = useState<boolean>(false)
     const [message, setMessage] = useState<string>('')
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const baseURL = process.env.REACT_APP_URL
 
@@ -60,11 +62,12 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck}
 
     const handleGenerate = async () => {
         console.log('sending request')
+        setIsLoading(true)
         const genCardsFromText = async () => {
             const _id = user._id
             const text = inputValue
             const cost = tokenCost
-            const genCardsResponse = await axios.post(`${baseURL}api/cardsfromtext`, {_id, text, cost})
+            const genCardsResponse = await axios.post(`${baseURL}api/cardsfromtextfunction`, {_id, text, cost})
             if (genCardsResponse.data.user){
                 console.log(genCardsResponse.data.data)
                 const cardRes = genCardsResponse.data.cards
@@ -76,6 +79,9 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck}
                 }
                 setUser(genCardsResponse.data.user)
                 setCards([...cards].concat([...tempCards]))
+                setIsLoading(false)
+                setInputValue('')
+                setTokenCost(0)
             }
         }
         const response = await genCardsFromText()
@@ -86,6 +92,7 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck}
     return (
         <div className="add-cards-from-text-main">
             <SuccessAndFailPopUp success={success} setSuccess={setSuccess} fail={fail} setFail={setFail} name={deck.name} message={message} />
+            {isLoading && (<LoadingCircle />)}
             <div className="add-cards-from-text-container">
                 <h2 className="add-cards-from-text-h2">Generate Flash Cards from Text: {deck.name}</h2>
                 <p>Paste your text below and click generate to make custom flashcards from the text</p>
