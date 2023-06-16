@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import ErrorPopup from './ErrorPopup'
 import Deck from '../classes/Deck'
 import AddCardsFromText from './AddCardsFromText'
+import AddCardsFromAI from './AddCardsFromAI'
 
 interface AddCardsFromTextAndAIBaseProps {
     user: any
@@ -65,8 +66,7 @@ const AddCardsFromTextAndAIBase: React.FC<AddCardsFromTextAndAIBaseProps> = ({us
     } else if (route ==='ai') {
         return (
             <div>
-                <p>ai</p>
-                <p>{deck.name}</p>
+                <AddCardsFromAI user={user} setUser={setUser} deck={deck} />
             </div>
         )
     } else {
