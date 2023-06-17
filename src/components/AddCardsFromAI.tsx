@@ -3,6 +3,7 @@ import Card from "../classes/Card";
 import { useState } from 'react';
 import SimpleDeckView from "./SimpleDeckView";
 import SuccessAndFailPopUp from "./SuccessAndFailPopUp";
+import LoadingCircle from "./LoadingCircle";
 import axios from 'axios'
 
 import '../styles/AddCardsFromAI.css'
@@ -19,12 +20,13 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck }) 
   const [aiTokens, setAiTokens] = useState(user.ai_tokens);
   const [topic, setTopic] = useState('');
   const [subTopic, setSubTopic] = useState('');
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState(5);
   const [confirmPopup, setConfirmPopup] = useState(false);
   const [cards, setCards] = useState<string[][]>([])
   const [success, setSuccess] = useState(false)
   const [fail, setFail] = useState(false)
   const [message, setMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleTopicChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTopic(event.target.value);
@@ -67,6 +69,7 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck }) 
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true)
     const submitHelper = async () => {
       try{
         const _id = user._id
@@ -80,10 +83,12 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck }) 
               tempCards.push([response.data.cards[i].question, response.data.cards[i].answer])
             }
             setCards(cards.concat(tempCards))
+            setIsLoading(false)
           }
         }
       } catch (error) {
         console.error(error)
+        setIsLoading(false)
       }
     }
     submitHelper()
@@ -91,6 +96,9 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck }) 
 
   return (
     <div className="add-cards-from-ai-main">
+      {isLoading && (
+        <LoadingCircle />
+      )}
       <SuccessAndFailPopUp success={success} setSuccess={setSuccess} fail={fail} setFail={setFail} message={message} name={deck.name}/>
       <h2 className="add-cards-from-ai-h2">Add cards to {deck.name}</h2>
       <form onSubmit={handleSubmit} className="add-cards-from-ai-form">
