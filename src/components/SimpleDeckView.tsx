@@ -8,9 +8,6 @@ interface SimpleDeckViewProps {
   setDeck: React.Dispatch<React.SetStateAction<string[][]>>;
 }
 
-/*
-TODO: Implement Delete logic
-*/
 
 const SimpleDeckView: React.FC<SimpleDeckViewProps> = ({ deck, setDeck }) => {
     const [flipedArr, setFlipedArr] = useState(deck.map(x=>true))
