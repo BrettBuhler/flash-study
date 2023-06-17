@@ -1,0 +1,66 @@
+.add-cards-from-ai-main {
+    width: 50vw;
+    margin: 0 auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-cards-from-ai-h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .add-cards-from-ai-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-cards-from-ai-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .add-cards-from-ai-input,
+  .number-select {
+    height: 40px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  
+  .add-cards-from-ai-button {
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-cards-from-ai-button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .add-cards-from-ai-main {
+      padding: 10px;
+      width: 70vw;
+    }
+  
+    .add-cards-from-ai-input,
+    .number-select {
+      font-size: 14px;
+    }
+  
+    .add-cards-from-ai-button {
+      font-size: 14px;
+    }
+  }
