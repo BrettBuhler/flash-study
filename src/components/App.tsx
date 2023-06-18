@@ -11,11 +11,11 @@ import AddDeck from './AddDeck'
 import AddDeckManual from './AddDeckManual'
 import EditDecks from './EditDecks'
 import AddCardsFromTextAndAIBase from './AddCardsFromTextAndAIBase'
+import Study from './Study'
 
 
 const App = () => {
   const [user, setUser] = useState({})
-  const secret = process.env.REACT_APP_SECRET
 
   return (
     <div>
@@ -59,6 +59,11 @@ const App = () => {
         <Route path='/edit-decks'
           element = {
               <EditDecks user={user} setUser={setUser}/>
+          }
+        />
+        <Route path='/study'
+          element = {
+              <Study user={user} setUser={setUser}/>
           }
         />
       </Routes>

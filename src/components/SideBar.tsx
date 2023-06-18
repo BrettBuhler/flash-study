@@ -52,6 +52,11 @@ const SideBar: React.FC<SideBarProps> = ({ isOpen, setIsOpen, user}) => {
           </li>
         )}
         <li className="sidebar-ul-li">
+          <button onClick={() => navHelper('/study')} className="sidebar-ul-li-button">
+            Study
+          </button>
+        </li>
+        <li className="sidebar-ul-li">
           <button onClick={() => navHelper('/add-deck')} className="sidebar-ul-li-button">
             Add Deck
           </button>

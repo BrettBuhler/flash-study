@@ -4,6 +4,7 @@ import ErrorPopup from './ErrorPopup'
 import Deck from '../classes/Deck'
 import AddCardsFromText from './AddCardsFromText'
 import AddCardsFromAI from './AddCardsFromAI'
+import TopBar from './TopBar'
 
 interface AddCardsFromTextAndAIBaseProps {
     user: any
@@ -60,13 +61,15 @@ const AddCardsFromTextAndAIBase: React.FC<AddCardsFromTextAndAIBaseProps> = ({us
     if (route === 'text'){
         return (
             <div>
+                <TopBar user={user} setUser={setUser} />
                 <AddCardsFromText user={user} setUser={setUser} deck={deck} />
             </div>
         )
     } else if (route ==='ai') {
         return (
             <div>
-                <AddCardsFromAI user={user} setUser={setUser} deck={deck} />
+                <TopBar user={user} setUser={setUser} />
+                <AddCardsFromAI user={user} setUser={setUser} deck={deck} isEdit={false}/>
             </div>
         )
     } else {

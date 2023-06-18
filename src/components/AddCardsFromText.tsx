@@ -11,9 +11,10 @@ interface AddCardsFromTextProps {
     user: any
     setUser: React.Dispatch<React.SetStateAction<any>>
     deck: Deck
+    isEdit?: boolean
 }
 
-const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck}) => {
+const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck, isEdit}) => {
     const [inputValue, setInputValue] = useState<string>('')
     const [tokenCost, setTokenCost] = useState<number>(0)
     const [cards, setCards] = useState<string[][]>([])
@@ -43,20 +44,38 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck}
         })
         const _id = user._id
         const name = deck.name
-        try {
-            const response = await axios.post(`${baseURL}api/add`, {"_id": _id, "name": name, "cards": saveCards})
-            if (response.data.user){
-                setUser(response.data.user)
-                setSuccess(true)
-                setMessage(`Saved ${deck.name} with ${saveCards.length} cards`)
-            } else {
+        if (isEdit) {
+            try {
+                const response = await axios.put(`${process.env.REACT_APP_URL}api/addcards`, {"_id": _id, "name": name, "cards": saveCards})
+                if (response.data.user){
+                    setUser(response.data.user)
+                    setMessage(`Added ${cards.length} cards to ${name}`)
+                    setSuccess(true)
+                } else {
+                    setFail(true)
+                    setMessage(`Unable to save ${deck.name} with updated cards`)
+                }
+              } catch (error) {
+                  console.error(error)
+                  setFail(true)
+                  setMessage(`Unable to save ${deck.name} with updated cards`)
+              }
+        } else {
+            try {
+                const response = await axios.post(`${baseURL}api/add`, {"_id": _id, "name": name, "cards": saveCards})
+                if (response.data.user){
+                    setUser(response.data.user)
+                    setSuccess(true)
+                    setMessage(`Saved ${deck.name} with ${saveCards.length} cards`)
+                } else {
+                    setFail(true)
+                    setMessage(`Unable to save ${deck.name} to database, try again later`)
+                }
+            } catch (error){
                 setFail(true)
                 setMessage(`Unable to save ${deck.name} to database, try again later`)
+                console.error(error)
             }
-        } catch (error){
-            setFail(true)
-            setMessage(`Unable to save ${deck.name} to database, try again later`)
-            console.error(error)
         }
     }
 

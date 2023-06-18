@@ -1,5 +1,5 @@
 import Deck from "../classes/Deck"
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 
@@ -7,6 +7,8 @@ import EditStatusPopup from "./EditStatusPopup"
 import EditAddDeckManual from './EditAddDeckManual'
 import EditSimpleDeckView from "./EditSimpleDeckView"
 import MergeDeck from "./MergeDecks"
+import AddCardsFromAI from "./AddCardsFromAI"
+import AddCardsFromText from "./AddCardsFromText"
 
 interface EditSelectedDeckProps {
     user: any
@@ -67,13 +69,13 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
         case 2:
             return (
                 <div className="edit-selected-deck-2">
-    
+                    <AddCardsFromAI user={user} setUser={setUser} deck={deck} isEdit={true}/>
                 </div>
             )
         case 3:
             return (
                 <div className="edit-selected-deck-3">
-    
+                    <AddCardsFromText user={user} setUser={setUser} deck={deck} isEdit={true}/>
                 </div>
             )
         case 4:
