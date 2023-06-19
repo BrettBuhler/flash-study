@@ -1,0 +1,85 @@
+.dashboard-main{
+    background: #333;
+    padding-bottom: 5vh;
+}
+
+.dashboard-welcome {
+    width: 100%;
+    max-width: 630px; /* Match the maximum width of the menu */
+    margin: 0 auto; /* Center the welcome section within the available space */
+    background-color: #f2f2f2;
+    padding-bottom: 5vh;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-welcome h2 {
+    padding-top: 5vh;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-welcome p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 5px;
+  }
+  
+  .dashboard-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    max-width: 640px; /* Adjust this value based on your desired maximum width */
+    margin: 0 auto; /* Centers the menu within the available space */
+  }
+  
+  .dashboard-item {
+    width: 300px;
+    height: 300px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    /* Add any additional styles for each menu item if needed */
+    transition: background-color 0.3s ease;
+  }
+
+  .dashboard-item-text {
+    text-align: center;
+  }
+
+.dashboard-study{
+    background-color: #dadaff;
+    opacity: 1;
+    background: linear-gradient(135deg, #0021a955 25%, transparent 25%) -19px 0/ 38px 38px, linear-gradient(225deg, #0021a9 25%, transparent 25%) -19px 0/ 38px 38px, linear-gradient(315deg, #0021a955 25%, transparent 25%) 0px 0/ 38px 38px, linear-gradient(45deg, #0021a9 25%, #dadaff 25%) 0px 0/ 38px 38px;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(208, 222, 6);
+}
+
+.dashboard-study:hover {
+    background-color: #31313f;
+    background: linear-gradient(135deg, #00a91f55 25%, transparent 25%) -19px 0/ 38px 38px, linear-gradient(225deg, #00a911 25%, transparent 25%) -19px 0/ 38px 38px, linear-gradient(315deg, #2fdc2955 25%, transparent 25%) 0px 0/ 38px 38px, linear-gradient(45deg, #74eb4d 25%, #29293c 25%) 0px 0/ 38px 38px;
+}
+
+.dashboard-store{
+    background-color: #dadaff;
+    opacity: 1;
+    background-image:  linear-gradient(30deg, #0021a9 12%, transparent 12.5%, transparent 87%, #0021a9 87.5%, #0021a9), linear-gradient(150deg, #0021a9 12%, transparent 12.5%, transparent 87%, #0021a9 87.5%, #0021a9), linear-gradient(30deg, #0021a9 12%, transparent 12.5%, transparent 87%, #0021a9 87.5%, #0021a9), linear-gradient(150deg, #0021a9 12%, transparent 12.5%, transparent 87%, #0021a9 87.5%, #0021a9), linear-gradient(60deg, #0021a977 25%, transparent 25.5%, transparent 75%, #0021a977 75%, #0021a977), linear-gradient(60deg, #0021a977 25%, transparent 25.5%, transparent 75%, #0021a977 75%, #0021a977);
+    background-size: 38px 67px;
+    background-position: 0 0, 0 0, 19px 33px, 19px 33px, 0 0, 19px 33px;
+}
+
+.dashboard-add{
+    background-color: #dadaff;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #dadaff 32px ), repeating-linear-gradient( #0021a955, #0021a9 );
+}
+  

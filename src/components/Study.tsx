@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Deck from '../classes/Deck'
 import Card from '../classes/Card'
-
-import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 import ErrorPopup from './ErrorPopup'
 import FlashCard from './FlashCard'
+import TopBar from './TopBar'
+import '../styles/Study.css'
+
+
 
 
 interface StudyProps {
@@ -22,6 +26,7 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [cards, setCards] = useState<Card[]>([])
     const [index, setIndex] = useState(0)
+    const [finished, setFinished] = useState(false)
 
     const navigate = useNavigate()
 
@@ -36,10 +41,21 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
         }
     },[deck])
 
+    const shuffle = (cardArr: Card[]) => {
+        return cardArr.sort((a, b) => {
+            const aTriesSum = a.tries.reduce((sum, tries) => sum + tries, 0)
+            const bTriesSum = b.tries.reduce((sum, tries) => sum + tries, 0)
+
+            return bTriesSum - aTriesSum
+        })
+    }
+    
     const nextCard = () => {
         if (index >= cards.length - 1){
-            //FINISHED DECK
+            let shuffledCards = shuffle(cards)
             setIndex(0)
+            setCards(shuffledCards)
+            setFinished(true)
         } else {
             setIndex(index + 1)
         }
@@ -68,22 +84,63 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
         setSelectOption(event.target.value)
     }
 
+    const handleFinished = async () => {
+        try {
+            const _id = user._id
+            const name = deck !== undefined ? deck.name : ''
+            const cardsToSend = cards.map(item => {
+                return {question: item.question, answer: item.answer, tries: item.tries, lastTry: item.lastTry}
+            })
+            const response = await axios.put(`${process.env.REACT_APP_URL}api/updatedeck`, {_id: _id, name: name, cards: cardsToSend})
+
+            if (response.data.user){
+                setUser(response.data.user)
+                navigate('/dashboard')
+            } else {
+                throw new Error('Unable to save session')
+            }
+
+        } catch (error) {
+            let tempName: string = ''
+            if (deck !== undefined){
+                tempName = deck.name
+            } else {
+                tempName = 'deck'
+            }
+            console.error(error)
+            setIsError(true)
+            setErrorMessage(`Unable to update ${tempName} with study session`)
+        }
+    }
+
     return (
         <section id="study" className="study-main">
+            <TopBar user={user} setUser={setUser}/>
             {deck === undefined && (
-                <div>
+                <div className='study-select-container'>
                     <ErrorPopup error={isError} setError={setIsError} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
-                    <h2>Select a Deck</h2>
-                    <select value={selectOption} onChange={handleSelectChange}>
-                        <option value={''}>Select a Deck</option>
-                        {deckArr.map((item: Deck) => <option value={item.name} key={item.name + '-option'}>{item.name}</option>)}
+                    <h2 className='study-h2'>Select a Deck</h2>
+                    <select value={selectOption} onChange={handleSelectChange} className='study-select'>
+                        <option value={''} className='study-option'>Select a Deck</option>
+                        {deckArr.map((item: Deck) => <option value={item.name} key={item.name + '-option'} className='study-option'>{item.name}</option>)}
                     </select>
-                    <button onClick={handleStudy}>Study</button>
-                    <button onClick={()=>navigate('/dashboard')}>Back</button>
+                    <div className='study-button-container'>
+                        <button onClick={handleStudy} className='study-button'>Study</button>
+                        <button onClick={()=>navigate('/dashboard')} className='study-button'>Back</button>
+                    </div>
                 </div>
             )}
             {deck !== undefined && cards.length > 0 && (
                 <div>
+                    {finished && (<div className='finished-popup-background'>
+                        <div className='finished-popup-main'>
+                            <p className='finished-popup-p'>Congratulations, you finished studying {deck.name}! Study again or return to the dashboard. Remeber that the key to success is spaced repitition.</p>
+                            <div className='finished-popup-button-container'>
+                                <button className='finished-popup-button' onClick={()=>setFinished(false)}>Study Again</button>
+                                <button className='finished-popup-button' onClick={handleFinished}>Dashboard</button>
+                            </div>
+                        </div>
+                    </div>)}
                     <h2>WE MADE IT: {deck.name}</h2>
                     <button onClick={()=>console.log(cards)}>Cards</button>
                     <FlashCard flashCard={cards[index]} nextCard={()=>nextCard()}/>

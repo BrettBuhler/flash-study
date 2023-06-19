@@ -1,0 +1,100 @@
+/* FINISHED POPUP */
+
+.finished-popup-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  .finished-popup-main {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 80%;
+  }
+  
+  .finished-popup-p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .finished-popup-button-container {
+    display: flex;
+    justify-content:center;
+  }
+  
+  .finished-popup-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    width: 45%;
+    margin: 10px;
+  }
+  
+  .finished-popup-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* STUDY SELECT */
+  .study-select-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .study-h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .study-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    margin-bottom: 20px;
+  }
+  
+  .study-option {
+    font-size: 16px;
+  }
+  
+  .study-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .study-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .study-button:hover {
+    background-color: #0056b3;
+  }

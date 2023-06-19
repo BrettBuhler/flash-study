@@ -66,6 +66,21 @@ const App = () => {
               <Study user={user} setUser={setUser}/>
           }
         />
+        <Route path='/store'
+          element = {
+              <div>store</div>
+          }
+        />
+        <Route path='/help'
+          element = {
+              <div>help</div>
+          }
+        />
+        <Route path='/stats'
+          element = {
+              <div>stats</div>
+          }
+        />
       </Routes>
     </div>
   )
