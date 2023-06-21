@@ -46,12 +46,12 @@ const Dashboard: React.FC<DashboardProps> = ({ user, setUser}) => {
     As you study, the app keeps track of your performance and mastery levels for each deck.</p>
             </div>
             <div className='dashboard-menu'>
-                <div className='dashboard-study dashboard-item' onClick={()=>navigate('/study')}>Study</div>
-                <div className='dashboard-store dashboard-item' onClick={()=>navigate('/store')}>Store</div>
-                <div className='dashboard-add dashboard-item' onClick={()=>navigate('/add-deck')}>Add Deck</div>
-                <div className='dashboard-edit dashboard-item' onClick={()=>navigate('/edit-decks')}>Edit Decks</div>
-                <div className='dashboard-stats dashboard-item' onClick={()=>navigate('/stats')}>Stats</div>
-                <div className='dashboard-help dashboard-item' onClick={()=>navigate('/help')}>Help</div>
+                <div className='dashboard-study dashboard-item wiggle-animation' onClick={()=>navigate('/study')}>Study</div>
+                <div className='dashboard-store dashboard-item wiggle-animation' onClick={()=>navigate('/store')}>Store</div>
+                <div className='dashboard-add dashboard-item wiggle-animation' onClick={()=>navigate('/add-deck')}>Add Deck</div>
+                <div className='dashboard-edit dashboard-item wiggle-animation' onClick={()=>navigate('/edit-decks')}>Edit Decks</div>
+                <div className='dashboard-stats dashboard-item wiggle-animation' onClick={()=>navigate('/stats')}>Stats</div>
+                <div className='dashboard-help dashboard-item wiggle-animation' onClick={()=>navigate('/help')}>Help</div>
             </div>
         </div>
     )

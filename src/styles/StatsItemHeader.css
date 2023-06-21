@@ -1,0 +1,55 @@
+.stats-item-header {
+    width: 80%;
+    display: flex;
+    align-content: center;
+    margin: auto;
+    border-bottom: 5px solid #fff;
+    font-size: 2rem;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.stats-item-header-label {
+    width: 33%;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: hidden; /* Add this line to hide overflow */
+    white-space: nowrap; /* Add this line to prevent text wrapping */
+    text-overflow: ellipsis; /* Add this line to show ellipsis */
+}
+
+@media (max-width: 900px) {
+    .stats-item-header {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .stats-item-header {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .stats-item-header {
+      font-size: 1.6rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .stats-item-header {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .stats-item-header {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .stats-item-header {
+      font-size: 1rem;
+    }
+  }

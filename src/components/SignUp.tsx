@@ -67,7 +67,7 @@ const SignUp: React.FC<SignUpProps> = ({ setUser }) => {
     }
     try {
       //change to /api/register before sending build to production: http://localhost:5000/api/register
-      const response = await axios.post('/api/register', {
+      const response = await axios.post(`${process.env.REACT_APP_URL}api/register`, {
         email: email,
         password: password,
       })

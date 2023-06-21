@@ -1,0 +1,65 @@
+.stats-main{
+    background-color: #1e1e85;
+    opacity: 1;
+    background-image:  radial-gradient(#c70fb2 1.1px, transparent 1.1px), radial-gradient(#c70fb2 1.1px, #1e1e85 1.1px);
+    background-size: 44px 44px;
+    background-position: 0 0,22px 22px;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.stats-main-stats {
+    padding-top: 10vh;
+}
+
+.stats-main-h2 {
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.stats-footer {
+    margin: 0 auto;
+    width: 80%;
+    border-bottom: 5px solid #fff
+}
+
+.stats-main-button {
+    display: block;
+    width: 80%;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 2rem;
+    margin:  auto;
+    margin-top: 20px;
+    border: 5px solid white;
+    color: white;
+    font-weight: bold;
+    background-color: #1e1e85;
+    opacity: 1;
+    background-image: radial-gradient( ellipse farthest-corner at 22px 22px , #c70fb2, #c70fb2 50%, #1e1e85 50%);
+    background-size: 22px 22px;
+    padding-bottom: 50px;
+}
+
+.stats-main-button:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 20px #c70fb2;
+    background-color: #c70fb2;
+    opacity: 1;
+    background-image: radial-gradient( ellipse farthest-corner at 44px 44px , #1e1e85, #1e1e85 50%, #c70fb2 50%);
+    background-size: 44px 44px;
+}
+
+@media (max-width: 900px) {
+    .stats-footer {
+      width: 90%;
+    }
+    .stats-main-button {
+        width: 90%
+    }
+  }
+
+.stats-main-bottom-spacer {
+    height: 30px;
+}

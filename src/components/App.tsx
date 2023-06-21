@@ -12,6 +12,8 @@ import AddDeckManual from './AddDeckManual'
 import EditDecks from './EditDecks'
 import AddCardsFromTextAndAIBase from './AddCardsFromTextAndAIBase'
 import Study from './Study'
+import Stats from './Stats'
+import Store from './Store'
 
 
 const App = () => {
@@ -68,7 +70,7 @@ const App = () => {
         />
         <Route path='/store'
           element = {
-              <div>store</div>
+              <Store user={user} setUser={setUser} />
           }
         />
         <Route path='/help'
@@ -78,7 +80,7 @@ const App = () => {
         />
         <Route path='/stats'
           element = {
-              <div>stats</div>
+              <Stats user={user} setUser={setUser}/>
           }
         />
       </Routes>

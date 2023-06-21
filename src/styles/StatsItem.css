@@ -1,0 +1,74 @@
+.stats-item {
+    margin: 20px auto;
+    height: 50px;
+    width: 80%;
+    background-color: rgba(48, 45, 45, 0.753);
+    border: 5px solid #fff;
+    border-radius: 25px;
+    position: relative;
+  }
+  
+  .stats-item-text-container {
+    width: 90%;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Add this line to center vertically */
+    font-size: 2rem;
+  }
+  
+  .stats-item-text {
+    width: 33%;
+    overflow: hidden; /* Add this line to hide overflow */
+    white-space: nowrap; /* Add this line to prevent text wrapping */
+    text-overflow: ellipsis; /* Add this line to show ellipsis */
+  }
+  
+  .middle {
+    text-align: center;
+  }
+  
+  .right {
+    text-align: right;
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 900px) {
+    .stats-item {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .stats-item-text {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .stats-item-text {
+      font-size: 1.6rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .stats-item-text {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .stats-item-text {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .stats-item-text {
+      font-size: 1rem;
+    }
+  }

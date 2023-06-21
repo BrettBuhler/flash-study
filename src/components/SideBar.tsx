@@ -57,6 +57,11 @@ const SideBar: React.FC<SideBarProps> = ({ isOpen, setIsOpen, user}) => {
           </button>
         </li>
         <li className="sidebar-ul-li">
+          <button onClick={() => navHelper('/store')} className="sidebar-ul-li-button">
+            Store
+          </button>
+        </li>
+        <li className="sidebar-ul-li">
           <button onClick={() => navHelper('/add-deck')} className="sidebar-ul-li-button">
             Add Deck
           </button>
@@ -64,6 +69,16 @@ const SideBar: React.FC<SideBarProps> = ({ isOpen, setIsOpen, user}) => {
         <li className="sidebar-ul-li">
           <button onClick={() => navHelper('/edit-decks')} className="sidebar-ul-li-button">
             Edit Decks
+          </button>
+        </li>
+        <li className="sidebar-ul-li">
+          <button onClick={() => navHelper('/stats')} className="sidebar-ul-li-button">
+            Stats
+          </button>
+        </li>
+        <li className="sidebar-ul-li">
+          <button onClick={() => navHelper('/help')} className="sidebar-ul-li-button">
+            Help
           </button>
         </li>
         <li className="sidebar-ul-li">
