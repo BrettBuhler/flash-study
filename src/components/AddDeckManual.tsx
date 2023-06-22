@@ -95,7 +95,7 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
         })
         //Change to /api/add before production build: http://localhost:5000/api/add
         try {
-            const response = await axios.post('http://localhost:5000/api/add', {_id, name, cards})
+            const response = await axios.post(`${process.env.REACT_APP_URL}api/add`, {_id, name, cards})
             if (response.data.user){
                 setUser(response.data.user)
                 setSuccess(true)

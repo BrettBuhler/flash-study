@@ -50,10 +50,10 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck}) => {
                 let name = deck.name
                 const cards = newDeck
                 console.log(_id, name, cards)
-                let updateResponse = await axios.put('http://localhost:5000/api/updatedeck',{ _id, name, cards })
+                let updateResponse = await axios.put(`${process.env.REACT_APP_URL}api/updatedeck`,{ _id, name, cards })
                 if (updateResponse.data.user){
                     name = secondDeck.name
-                    let deleteResponse = await axios.delete('http://localhost:5000/api/deletedeck', {data: {_id, name}})
+                    let deleteResponse = await axios.delete(`${process.env.REACT_APP_URL}api/deletedeck`, {data: {_id, name}})
                     if (deleteResponse.data.user){
                         setUser(deleteResponse.data.user)
                         setSuccess(true)

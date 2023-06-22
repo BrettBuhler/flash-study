@@ -72,7 +72,7 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
             const name = deck.name
             const cards = copyDeck
             //change to /api/updatedeck before production build: http://localhost:5000/api/updatedeck
-            const response = await axios.put('http://localhost:5000/api/updatedeck', {_id, name, cards})
+            const response = await axios.put(`${process.env.REACT_APP_URL}api/updatedeck`, {_id, name, cards})
             if (response.data.user){
                 setUser(response.data.user)
                 setMessage(`Successfully Edited ${deck.name}`)

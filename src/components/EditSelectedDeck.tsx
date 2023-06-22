@@ -32,7 +32,7 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
         const _id = user._id
         const name = deck.name
         try {
-            const response = await axios.delete('http://localhost:5000/api/deletedeck', {data: {_id, name}})
+            const response = await axios.delete(`${process.env.REACT_APP_URL}api/deletedeck`, {data: {_id, name}})
             if (response.data.user){
                 setUser(response.data.user)
                 setPopup(true)

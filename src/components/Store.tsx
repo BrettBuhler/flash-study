@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import ErrorPopup from './ErrorPopup'
+import Checkout from './Checkout'
 
 interface StoreProps {
     user: any
@@ -38,6 +39,7 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
             <ErrorPopup error={isError} setError={setIsError} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />
             <h1>HELLO STORE</h1>
             <button onClick={() => addTokens(100000)}>Add 100,000 tokens</button>
+            <Checkout user={user} setUser={setUser} />
         </div>
     )
 }
