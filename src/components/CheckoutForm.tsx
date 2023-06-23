@@ -70,7 +70,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({user, setUser}) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "/payment",
+        return_url: "https://flash-study.uc.r.appspot.com/dashboard/complete",
       },
     });
 

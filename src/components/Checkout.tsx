@@ -21,10 +21,10 @@ const Checkout: React.FC<CheckoutProps> = ({user, setUser}) => {
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         // NEEDS TO BE BACK END URL
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`/create-payment-intent`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+          body: JSON.stringify({ items: [{ id: "xl-tshirt" }], user_id: user._id}),
         })
           .then((res) => res.json())
           .then((data) => setClientSecret(data.clientSecret));
