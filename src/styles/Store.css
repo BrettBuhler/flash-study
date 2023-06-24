@@ -1,0 +1,23 @@
+.store-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1e1e85;
+    opacity: 1;
+    background-image: radial-gradient(#c70fb2 1.1px, transparent 1.1px),
+      radial-gradient(#c70fb2 1.1px, #1e1e85 1.1px);
+    background-size: 44px 44px;
+    background-position: 0 0, 22px 22px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.store-h1 {
+    margin-top: 10vh;
+    font-size: 2.5rem;
+    color: #fff;
+}

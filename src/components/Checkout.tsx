@@ -21,7 +21,7 @@ const Checkout: React.FC<CheckoutProps> = ({user, setUser}) => {
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         // NEEDS TO BE BACK END URL
-        fetch(`/create-payment-intent`, {
+        fetch(`${process.env.REACT_APP_URL}create-payment-intent`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items: [{ id: "xl-tshirt" }], user_id: user._id}),
