@@ -6,8 +6,9 @@ import ErrorPopup from './ErrorPopup'
 import StoreItems from './StoreItems'
 import Deck from '../classes/Deck'
 import TopBar from './TopBar'
-import Checkout from './Checkout'
+import StorePurchase from './StorePurchase'
 
+import Item from '../classes/Item'
 import getDecks from '../services/getDecks'
 import storeGen from '../services/storeGen'
 import tokenImage from '../images/icons8-coin-100.png'
@@ -23,6 +24,9 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
     const [isError, setIsError] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [store, setStore] = useState<undefined | Deck[]>(undefined)
+    const [selectedItem, setSelectedItem] = useState<undefined | Item>(undefined)
+    const [selectedDeck, setSelectedDeck] = useState<Deck | undefined>(undefined)
+
     const isMounted = useRef(true)
 
     useEffect(()=>{
@@ -45,6 +49,17 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
         }
 
     },[])
+
+    useEffect(()=>{
+        if (selectedItem !== undefined && store){
+            for (let i = 0; i < store.length; i++){
+                if (store[i].name === selectedItem.name){
+                    setSelectedDeck(store[i])
+                    break
+                }
+            }
+        }
+    },[selectedItem])
 
     const navigate = useNavigate()
 
@@ -69,11 +84,11 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
             console.error(error)
         }
     }
-
     return (
         <div className='store-main'>
             <TopBar user={user} setUser={setUser} />
             <ErrorPopup error={isError} setError={setIsError} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />
+            <StorePurchase user={user} setUser={setUser} setItem={setSelectedItem} item={selectedItem} deck={selectedDeck}/>
             <div className='store-top-section'>
                 <div className='store-text'>
                     <h1 className='store-h1'>Flash Study Store</h1>
@@ -92,9 +107,10 @@ Supercharge your learning with our AI tokens! Build decks effortlessly and extra
                     </div>
                 </div>
             </div>
-            {store !== undefined && (<StoreItems items={storeGen(store)}/>)}
+            {store !== undefined && (<StoreItems items={storeGen(store)} setSelectedItem={setSelectedItem} />)}
             <button onClick={() => addTokens(100000)}>Add 100,000 tokens</button>
             <button onClick={()=>console.log(store)}>GET STORE</button>
+            <button onClick={()=>console.log(selectedItem)}>GET ITEM</button>
             
         </div>
     )

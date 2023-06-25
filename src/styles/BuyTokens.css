@@ -5,7 +5,7 @@
     align-items: center;
 }
 .buy-tokens-h2 {
-    margin-top: 10vh;
+    margin-top: 100px;
     font-weight: bold;
     font-size: 3rem;
 }
@@ -21,10 +21,12 @@
 }
 
 .buy-tokens-background {
-    background-color: #741495;
+    background-color: #1e1e85;
     opacity: 1;
-    background-size: 14px 14px;
-    background-image: repeating-linear-gradient(45deg, #949290 0, #949290 1.4000000000000001px, #741495 0, #741495 50%);
+    background-image: radial-gradient(#c70fb2 1.1px, transparent 1.1px),
+      radial-gradient(#c70fb2 1.1px, #1e1e85 1.1px);
+    background-size: 44px 44px;
+    background-position: 0 0, 22px 22px;
     height: 100%;
     min-height: 100vh;
 }

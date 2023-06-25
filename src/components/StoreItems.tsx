@@ -1,15 +1,22 @@
 import Item from "../classes/Item"
+import Deck from "../classes/Deck"
 
 import '../styles/StoreItems.css'
 
 interface StoreItemsProps {
     items: Item[]
+    setSelectedItem: React.Dispatch<React.SetStateAction<undefined | Item>>
 }
 
-const StoreItems: React.FC<StoreItemsProps> = ({items}) => {
+const StoreItems: React.FC<StoreItemsProps> = ({items, setSelectedItem}) => {
+
+    const handleClick = (thisItem: Item) => {
+        setSelectedItem(thisItem)
+    }
+
     return (
         <div className="store-items-container">
-            {items.map(item => (<div className="store-items-item wiggle-animation" key={`key.${item.name}`}>
+            {items.map(item => (<div className="store-items-item wiggle-animation" key={`key.${item.name}`} onClick={()=>handleClick(item)}>
                 <img
                 className="store-items-item-img"
                 src={item.image}
