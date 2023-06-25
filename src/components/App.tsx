@@ -14,6 +14,7 @@ import AddCardsFromTextAndAIBase from './AddCardsFromTextAndAIBase'
 import Study from './Study'
 import Stats from './Stats'
 import Store from './Store'
+import BuyTokens from './BuyTokens'
 
 
 const App = () => {
@@ -81,6 +82,11 @@ const App = () => {
         <Route path='/stats'
           element = {
               <Stats user={user} setUser={setUser}/>
+          }
+        />
+        <Route path='/store/buytokens'
+          element = {
+            <BuyTokens user={user} setUser={setUser}/>
           }
         />
       </Routes>

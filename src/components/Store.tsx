@@ -10,6 +10,7 @@ import Checkout from './Checkout'
 
 import getDecks from '../services/getDecks'
 import storeGen from '../services/storeGen'
+import tokenImage from '../images/icons8-coin-100.png'
 
 import '../styles/Store.css'
 
@@ -47,6 +48,10 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
 
     const navigate = useNavigate()
 
+    const handleTokenClick = () => {
+        navigate('/store/buytokens')
+    }
+
     const addTokens = async (tokens: number) => {
         try {
             const _id = user._id
@@ -69,7 +74,24 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
         <div className='store-main'>
             <TopBar user={user} setUser={setUser} />
             <ErrorPopup error={isError} setError={setIsError} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />
-            <h1 className='store-h1'>HELLO STORE</h1>
+            <div className='store-top-section'>
+                <div className='store-text'>
+                    <h1 className='store-h1'>Flash Study Store</h1>
+                    <p className='store-p'>
+Supercharge your learning with our AI tokens! Build decks effortlessly and extract flashcards from text with ease. Each 100K tokens unlocks approximately 1000 flashcards, saving you valuable time and effort. Purchase our AI tokens now and unlock a world of smarter studying.</p>
+                </div>
+                <div className="store-item-token store-items-item wiggle-animation" onClick={handleTokenClick}>
+                    <img
+                    className="store-items-item-img"
+                    src={tokenImage}
+                    alt={'tokens'}
+                    />
+                    <div className="store-items-item-text-container store-item-token-text-container">
+                        <div className="store-items-item-name store-item-100k">100k Tokens</div>
+                        <div className="store-items-item-price store-item-price">$5.00 CAD</div>
+                    </div>
+                </div>
+            </div>
             {store !== undefined && (<StoreItems items={storeGen(store)}/>)}
             <button onClick={() => addTokens(100000)}>Add 100,000 tokens</button>
             <button onClick={()=>console.log(store)}>GET STORE</button>
