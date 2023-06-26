@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.932);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,6 @@
     text-align: center; /* Center the title */
   }
   
-  /* CSS for the heading inside the pop-up */
   .deck-name-h3 {
     font-size: 18px;
     margin-bottom: 10px;
@@ -62,7 +61,52 @@
     max-width: 200px; /* Set the maximum button width if needed */
   }
   
-  /* CSS for the button hover effect */
   .deck-name-popup-button:hover {
     background-color: #0056b3;
   }
+
+.add-deck-manual-main {
+    background-color: #141315;
+    opacity: 1;
+    background-image:  radial-gradient(#600657 2px, transparent 2px), radial-gradient(#600657 2px, #141315 2px);
+    background-size: 80px 80px;
+    background-position: 0 0,40px 40px;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+ .add-deck-manual-main textarea {
+  min-width: 300px;
+  width: 40vw;
+  height: 150px;
+  resize: none;
+}
+
+.add-deck-manual-top {
+  margin: 0 auto;
+  border: 5px solid #fff;
+  width: 40vw;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  padding: 40px;
+  border-radius: 25px;
+
+
+  background-color: #9d74c7;
+  opacity: 1;
+  background-image:  linear-gradient(30deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(150deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(30deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(150deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(60deg, #23222377 25%, transparent 25.5%, transparent 75%, #23222377 75%, #23222377), linear-gradient(60deg, #23222377 25%, transparent 25.5%, transparent 75%, #23222377 75%, #23222377);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+.add-deck-h3 {
+  font-size: 2rem;
+}
+
+.add-deck-manual-h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}

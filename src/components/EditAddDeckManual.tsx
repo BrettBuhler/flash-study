@@ -92,23 +92,25 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser, back, deck
         <div className='add-deck-manual-main'>
             <SuccessAndFailPopUp setSuccess={setSuccess} success={success} fail={fail} setFail={setFail} name={deckName} message={successMessage}/>
             <ErrorPopup setError={setNameError} error={nameError} errorMessage={nameMessage} setErrorMessage={setNameMessage}/>
-            <h2 className='add-deck-manual-h2'>Add cards to {`${deckName}`}</h2>
-            <SimpleDeckView deck={tempDeck} setDeck={setTempDeck}/>
-            <div className='add-deck-input-container'>
-                <div className='add-deck-input'>
-                    <h3>Front</h3>
-                    <textarea id='front-textarea' value={frontValue} onChange={handleFrontChange}></textarea>
-                </div>
-                <div className='add-deck-input'>
-                    <h3>Back</h3>
-                    <textarea id='back-textarea' value={backValue} onChange={handleBackChange}></textarea>
-                </div>
-                <div className='add-deck-input-buttons'>
-                    <button className='add-deck-input-button' onClick={handleAdd}>Add</button>
-                    <button className='add-deck-input-button' onClick={handleCreateRequest}>Create Deck</button>
-                    <button className='add-deck-input-button' onClick={()=>back(0)}>Back</button>
+            <div className='add-deck-manual-top'>
+                <h2 className='add-deck-manual-h2'>Add cards to {`${deckName}`}</h2>
+                <div className='add-deck-input-container'>
+                    <div className='add-deck-input'>
+                        <h3>Front</h3>
+                        <textarea id='front-textarea' value={frontValue} onChange={handleFrontChange}></textarea>
+                    </div>
+                    <div className='add-deck-input'>
+                        <h3>Back</h3>
+                        <textarea id='back-textarea' value={backValue} onChange={handleBackChange}></textarea>
+                    </div>
+                    <div className='add-deck-input-buttons'>
+                        <button className='add-deck-input-button' onClick={handleAdd}>Add</button>
+                        <button className='add-deck-input-button' onClick={handleCreateRequest}>Update Deck</button>
+                        <button className='add-deck-input-button' onClick={()=>back(0)}>Back</button>
+                    </div>
                 </div>
             </div>
+            <SimpleDeckView deck={tempDeck} setDeck={setTempDeck}/>
         </div>
     )
 }
