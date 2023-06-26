@@ -1,9 +1,14 @@
 .login-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: calc(100vh - 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   
   .login-title {

@@ -3,6 +3,10 @@ import axios from 'axios'
 import ErrorPopup from './ErrorPopup'
 import { useNavigate } from 'react-router-dom'
 
+import flashStudyLogo from '../images/icons8-lightning-80.png'
+import hTechImage from '../images/1368426.jpg'
+
+
 interface SignUpProps {
   setUser: React.Dispatch<React.SetStateAction<{}>>
 }
@@ -92,53 +96,56 @@ const SignUp: React.FC<SignUpProps> = ({ setUser }) => {
   };
 
   return (
-    <div className="signup-container">
-      <ErrorPopup
-        error={signupError}
-        setError={setSignupError}
-        errorMessage={errorMessage}
-        setErrorMessage={setErrorMessage}
-      />
-      <h2 className="signup-title">Sign Up</h2>
-      <form className="signup-form">
-        <label htmlFor="email" className="signup-label">
+    <div className="login-container" style={{background: `url(${hTechImage})`}}>
+      <ErrorPopup error={signupError} setError={setSignupError} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
+      <div>
+        <div className='login-title-container'>
+          <img src={flashStudyLogo} className='login-title-logo'/>
+          <h2 className="login-title">Flash Study</h2>
+        </div>
+        <form className="login-form">
+          <div className='login-form-title'>Sign Up</div>
+        <label htmlFor="email" className="login-label">
           Email:
         </label>
         <input
           type="email"
           id="email"
-          className="signup-input"
+          className="login-input"
           value={email}
           onChange={handleEmailChange}
         />
-        <label htmlFor="password" className="signup-label">
+        <label htmlFor="password" className="login-label">
           Password:
         </label>
         <input
           type="password"
           id="password"
-          className="signup-input"
+          className="login-input"
           value={password}
           onChange={handlePasswordChange}
         />
-        <label htmlFor="confirmPassword" className="signup-label">
+        <label htmlFor="confirmPassword" className="login-label">
             Confirm Password:
         </label>
         <input
           type='password'
           id='confirmPassword'
-          className='sign=up-input'
+          className='login-input'
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
         >
         </input>
-        <button type="button" className="signup-button" onClick={handleSignUp}>
-          Sign Up
-        </button>
-        <button type="button" className="home-button" onClick={handleHome}>
-            Home
-        </button>
+        <div className='form-buttons'>
+          <button type="button" className="login-button" onClick={handleSignUp}>
+            Sign Up
+          </button>
+          <button type="button" className="login-button" onClick={handleHome}>
+              Home
+          </button>
+        </div>
       </form>
+      </div>
     </div>
   )
 }
