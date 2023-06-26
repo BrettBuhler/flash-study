@@ -17,8 +17,8 @@ const LandingPage = () => {
 
     return (
         <section className='landing-page-section'>
+            <Header />
             <LandingPageHero />
-            <FlashCard flashCard={display.deck[deckIndex]} nextCard={handleNextCard}/>
         </section>
     )
 }

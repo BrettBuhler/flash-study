@@ -1,45 +1,90 @@
 .hero-container {
+    background-color: #f5f5f5;
     display: flex;
-    flex-wrap: wrap;
-}
-  
-.hero-left {
-    flex: 2;
-    padding: 20px;
-}
-  
-.hero-right {
-    flex: 1;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 20px;
-}
+    max-width: 100vw;
+  }
   
-.hero-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-  
-.hero-description {
-    font-size: 16px;
-    color: #888;
-}
-  
-.hero-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  .hero-item-container {
+    max-width: 90vw;
     margin: 0 auto;
-    border-radius: 10px;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
-  /* Media Query for Mobile */
-@media (max-width: 768px) {
-    .hero-container {
+  .hero-left {
+    flex: 1;
+    padding-right: 40px;
+  }
+  
+  .hero-title {
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-size: 3em;
+    font-size: fit-content;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .hero-description {
+    font-size: 18px;
+    color: #f0eeee;
+    margin-bottom: 40px;
+  }
+  
+  .hero-right {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-item-container {
       flex-direction: column;
     }
-  
-    .hero-left,
-    .hero-right {
-      flex: 1;
+    .hero-title{
+      max-width: 80vw;
+      margin: auto;
+      margin-top: 100px;
     }
-}
+
+    .hero-description {
+      max-width: 80vw;
+      margin: 20px auto;
+    }
+  
+    .hero-left, .hero-right {
+      padding: 0;
+    }
+  
+    .hero-title {
+      font-size: 24px;
+    }
+  
+    .hero-description {
+      font-size: 16px;
+    }
+  }
+
+  .ignite {
+    display: inline;
+    font-family: 'Arial', sans-serif;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 10px #ff6600, 0 0 20px #ff6600, 0 0 30px #ff6600, 0 0 40px #ff6600, 0 0 50px #ff6600, 0 0 60px #ff6600, 0 0 70px #ff6600;
+    animation: igniteAnimation 1s infinite alternate;
+  }
+  
+  @keyframes igniteAnimation {
+    0% {
+      text-shadow: 0 0 10px #ff00dd, 0 0 20px #ff00d0, 0 0 30px #ff00e1, 0 0 40px #ff00dd, 0 0 50px #ff6600, 0 0 60px #bf00ff, 0 0 70px #ff6600;
+    }
+    100% {
+      text-shadow: 0 0 10px #ff00c3, 0 0 20px #ff6600, 0 0 30px #ff6600, 0 0 40px #eaff00, 0 0 50px #ff00f7, 0 0 60px #ddff00, 0 0 70px #ff6600, 0 0 80px #ff6600;
+    }
+  }

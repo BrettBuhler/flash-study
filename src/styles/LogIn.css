@@ -1,0 +1,127 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .login-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .login-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 5px solid #fff;
+    border-radius: 25px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #fff;
+    background-color: #101012;
+    background-image:  radial-gradient(#9B00E4 0.5px, transparent 0.5px), radial-gradient(#9B00E4 0.5px, #101012 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+  }
+
+  .login-form-title {
+    font-size: 1.6rem;
+    text-align: center;
+    width: 100%;
+    border-bottom: 5px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .login-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-family: 'Arial Narrow Bold', sans-serif;
+  }
+  
+  .login-input {
+    padding: 8px;
+    border: 2px solid black;
+    margin-bottom: 16px;
+    border-radius: 4px;
+  }
+  
+  .login-button {
+    height: 40px;
+    font-size: 25px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fcd444fe;
+    font-weight: bold;
+    color: #000000;
+    border: 2px solid #fff;
+  }
+  
+.login-button:hover {
+    background-color: #e7b707;
+    box-shadow: 0 0 10px 0 rgba(252, 0, 201, 0.5);
+}
+  
+
+  .login-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    border: 5px solid #fff;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #101012;
+    background-image:  radial-gradient(#9B00E4 0.5px, transparent 0.5px), radial-gradient(#9B00E4 0.5px, #101012 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+  }
+
+  .login-title-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .login-title {
+    font-size: 3rem;
+    margin: 0 auto;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 427px) {
+    .login-title {
+        font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 381px) {
+    .login-title {
+        font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 340px) {
+    .login-title {
+        font-size: 1.6rem;
+    }
+  }
+
+  .form-buttons {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-around;
+  }

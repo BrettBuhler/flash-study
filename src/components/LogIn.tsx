@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import ErrorPopup from './ErrorPopup'
 import { useNavigate } from 'react-router'
+
+import flashStudyLogo from '../images/icons8-lightning-80.png'
+import hTechImage from '../images/1368426.jpg'
+import '../styles/LogIn.css'
+
 interface LogInProps {
     setUser: React.Dispatch<React.SetStateAction<{}>>
 }
@@ -49,10 +54,15 @@ const LogIn:React.FC<LogInProps> = ({setUser}) => {
   }
 
   return (
-    <div className="login-container">
+    <div className="login-container" style={{background: `url(${hTechImage})`}}>
       <ErrorPopup error={loginError} setError={setLoginError} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>  
-      <h2 className="login-title">Log In</h2>
+      <div>
+      <div className='login-title-container'>
+        <img src={flashStudyLogo} className='login-title-logo'/>
+        <h2 className="login-title">Flash Study</h2>
+      </div>
       <form className="login-form">
+        <div className='login-form-title'>Log In</div>
         <label htmlFor="email" className="login-label">
           Email:
         </label>
@@ -73,13 +83,16 @@ const LogIn:React.FC<LogInProps> = ({setUser}) => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <button type="button" className="login-button" onClick={handleLogin}>
-          Log In
-        </button>
-        <button type="button" className="home-button" onClick={handleHome}>
-            Home
-        </button>
+        <div className='form-buttons'>
+          <button type="button" className="login-button" onClick={handleLogin}>
+            Log In
+          </button>
+          <button type="button" className="login-button" onClick={handleHome}>
+              Home
+          </button>
+        </div>
       </form>
+      </div>
     </div>
   )
 }

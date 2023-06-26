@@ -1,53 +1,97 @@
-.top-bar {
-    background-color: #f1f1f1;
-    padding: 10px;
-  }
-  
-  .container {
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .left-section {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .right-section {
-    display: flex;
-  }
-  
-  .right-section .button {
-    margin-left: 10px;
-  }
-  
-  .button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  /* Media Query for Small Screens */
-  @media (max-width: 370px) {
-    .logo {
-      font-size: 20px;
+
+
+.header-main {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  transition: all, 0.3s ease;
+  min-height: 75px;
+  min-height: 5vh;
+  max-width: 100vw;
+}
+
+.header-main.scrolled {
+  background-color: #101012;
+  background-image:  radial-gradient(#9B00E4 0.5px, transparent 0.5px), radial-gradient(#9B00E4 0.5px, #101012 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0,10px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #9B00E4;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100vw;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-weight: bold;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial Narrow Bold', sans-serif
+}
+
+.logo {
+  height: 50px;
+}
+
+.scrolled .logo-text {
+  color: #f7f7f7;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.header-button {
+  min-width: 10vw;
+  margin-left: 10px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  background-color: #fcd444;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 452px){
+    .header-button {
+      padding: 5px 5px;
+      font-size: 1rem;
     }
-  
-    .right-section .button {
-      margin-left: 8px;
-      padding: 8px 16px;
-      font-size: 12px;
+    .logo-text {
+      font-size: 1.5rem;
     }
-  }
+}
+
+@media (max-width: 363px) {
+    .header-button{
+      font-size: 0.8rem
+    }
+    .logo-text {
+      font-size: 1.2rem;
+    }
+}
+
+.header-button:hover {
+  background-color: #e7b707;
+  box-shadow: 0 0 10px 0 rgba(252, 0, 201, 0.5);
+}

@@ -3,7 +3,7 @@ import LandingPage from './LandingPage'
 import Dashboard from './Dashboard'
 import { Routes, Route } from 'react-router-dom'
 
-import '../styles/index.css'
+import '../styles/App.css'
 
 import LogIn from './LogIn'
 import SignUp from './SignUp'
