@@ -117,16 +117,24 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
         <section id="study" className="study-main">
             <TopBar user={user} setUser={setUser}/>
             {deck === undefined && (
-                <div className='study-select-container'>
-                    <ErrorPopup error={isError} setError={setIsError} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
-                    <h2 className='study-h2'>Select a Deck</h2>
-                    <select value={selectOption} onChange={handleSelectChange} className='study-select'>
-                        <option value={''} className='study-option'>Select a Deck</option>
-                        {deckArr.map((item: Deck) => <option value={item.name} key={item.name + '-option'} className='study-option'>{item.name}</option>)}
-                    </select>
-                    <div className='study-button-container'>
-                        <button onClick={handleStudy} className='study-button'>Study</button>
-                        <button onClick={()=>navigate('/dashboard')} className='study-button'>Back</button>
+                <div className='study-select-main'>
+                    <div className='study-select-instructions study-select-title'>
+                        Study
+                    </div>
+                    <div className='study-select-instructions'> 
+                        Choose a deck to study. Flip the cards to reveal answers and rate them as easy, medium, or hard. Track your deck's mastery and improve your learning.
+                    </div>
+                    <div className='study-select-container'>
+                        <ErrorPopup error={isError} setError={setIsError} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
+                        <h2 className='study-h2'>Select a Deck</h2>
+                        <select value={selectOption} onChange={handleSelectChange} className='study-select'>
+                            <option value={''} className='study-option'>Select a Deck</option>
+                            {deckArr.map((item: Deck) => <option value={item.name} key={item.name + '-option'} className='study-option'>{item.name}</option>)}
+                        </select>
+                        <div className='study-button-container'>
+                            <button onClick={handleStudy} className='study-button'>Study</button>
+                            <button onClick={()=>navigate('/dashboard')} className='study-button'>Back</button>
+                        </div>
                     </div>
                 </div>
             )}
