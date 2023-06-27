@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import React, { useState, useEffect } from 'react'
 import ErrorPopup from "./ErrorPopup"
 
+import '../styles/EditDeckSelect.css'
+
 interface EditDeckSelectProps {
   decks: Deck[];
   selectedIndex: boolean | number;
@@ -38,21 +40,23 @@ const EditDeckSelect: React.FC<EditDeckSelectProps> = ({ decks, selectedIndex, s
     return (
         <div className="edit-deck-select-main">
             <ErrorPopup error={error} errorMessage={errorMessage} setError={setError} setErrorMessage={setErrorMessage}/>
-        <h2 className="edit-deck-select-title">Select a Deck to Edit</h2>
-        <div className="edit-deck-select-deck-item-container">
-            <select className="deck-select">
-            <option value="">Select a deck</option>
-            {decks.map((deck, index) => (
-                <option key={index} value={index}>
-                {deck.name}
-                </option>
-            ))}
-            </select>
-        </div>
-        <div className="edit-deck-select-buttons">
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={()=>navigate('/dashboard')}>Back</button>
-        </div>
+            <div className="edit-deck-select-container">
+                <h2 className="edit-deck-select-title">Select a Deck to Edit</h2>
+                <div className="edit-deck-select-deck-item-container">
+                    <select className="deck-select">
+                    <option value="">Select a deck</option>
+                    {decks.map((deck, index) => (
+                        <option key={index} value={index}>
+                        {deck.name}
+                        </option>
+                    ))}
+                    </select>
+                </div>
+                <div className="edit-deck-select-buttons">
+                    <button onClick={handleEditClick} className="add-deck-button">Edit</button>
+                    <button onClick={()=>navigate('/dashboard')} className="add-deck-button">Back</button>
+                </div>
+            </div>
         </div>
     );
     };
