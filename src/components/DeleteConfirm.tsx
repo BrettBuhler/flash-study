@@ -33,11 +33,11 @@ const DeleteConfirm: React.FC<DeleteConfirmProps> = ({display, setDisplay, onDel
     return (
         <div className="delete-confirm-background">
             <div className="delete-confirm-container">
-                <h3 className="delete-confrim-title">Are you sure you want to delete:</h3>
+                <h3 className="delete-confirm-title">Are you sure you want to delete:</h3>
                 <div className="item-to-delete">{itemLines}</div>
                 <div className="delete-confirm-button-container">
-                    <button className="delete-confirm-button" onClick={handleYes}>Yes</button>
-                    <button className="delete-confirm-button" onClick={handleNo}>No</button>
+                    <button className="add-deck-button" onClick={handleYes}>Yes</button>
+                    <button className="add-deck-button" onClick={handleNo}>No</button>
                 </div>
             </div>
         </div>

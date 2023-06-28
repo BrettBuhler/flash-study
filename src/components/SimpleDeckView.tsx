@@ -65,29 +65,27 @@ const SimpleDeckView: React.FC<SimpleDeckViewProps> = ({ deck, setDeck }) => {
             console.log(flipedArr)
         }
         return (
-        <div className='simple-deck-container'>
+        <div className='simple-deck-main'>
+            <div className='simple-deck-title'>Deck Preview</div>
             <EditCardPopup front={editFront} back={editBack} setFront={setEditFront} setBack={setEditBack} deck={deck} setDeck={setDeck} editDeck={editDeck} setEditDeck={setEditDeck} editIndex={editIndex}/>
             <DeleteConfirm display={deleteConfirm} setDisplay={setDeleteConfirm} onDelete={deleteItem} indexToDelete={editIndex} itemToDelete={itemToDelete}/>
-            {deck.map((x, i)=>{
-                return(
-                    <div className='simple-deck-item-container' key={`simple-deck-item-${i}`}>
-                        <div className='simple-card'>
-                            <div className='simple-text'>{flipedArr[i] === true ? x[0] : x[1]}</div>
-                            <div className='red-line'></div>
-                            <div className='blue-line-1'></div>
-                            <div className='blue-line-2'></div>
-                            <div className='blue-line-3'></div>
-                            <div className='blue-line-4'></div>
-                            <div className='blue-line-5'></div>
+            <div className='simple-deck-container'>
+                {deck.map((x, i)=>{
+                    return(
+                        <div className='simple-deck-item-container' key={`simple-deck-item-${i}`}>
+                            <div className='simple-card'>
+                                <div className='simple-text'>{flipedArr[i] === true ? x[0] : x[1]}</div>
+                                <div className='red-line'></div>
+                            </div>
+                            <div className='simple-deck-item-button-container'>
+                                <button className='simple-deck-button' onClick={()=>handleEdit(x[0], x[1], i)}>Edit</button>
+                                <button className='simple-deck-button' onClick={()=>handleDelete(i)}>Delete</button>
+                                <button className='simple-deck-button' onClick={()=>handleFlip(i)}>Flip</button>
+                            </div>
                         </div>
-                        <div className='simple-deck-item-button-container'>
-                            <button className='simple-deck-button' onClick={()=>handleEdit(x[0], x[1], i)}>Edit</button>
-                            <button className='simple-deck-button' onClick={()=>handleDelete(i)}>Delete</button>
-                            <button className='simple-deck-button' onClick={()=>handleFlip(i)}>Flip</button>
-                        </div>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </div>
     )
   }

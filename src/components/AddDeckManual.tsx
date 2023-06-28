@@ -120,8 +120,8 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
                         <div className='deck-name-popup-form'>
                             <input type='text' onChange={handleInputValueChange} value={inputValue}></input>
                             <div className='deck-name-popup-buttons'>
-                                <button onClick={handleCreateDeck} className='deck-name-popup-button'>Create Deck</button>
-                                <button type='button' onClick={() => navigate('/dashboard')} className='deck-name-popup-button'>Back</button>
+                                <button onClick={handleCreateDeck} className='add-deck-button'>Create Deck</button>
+                                <button type='button' onClick={() => navigate('/dashboard')} className='add-deck-button'>Back</button>
                             </div>
                         </div>
                     </div>
@@ -139,9 +139,9 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
                         <textarea id='back-textarea' value={backValue} onChange={handleBackChange}></textarea>
                     </div>
                     <div className='add-deck-input-buttons'>
-                        <button className='add-deck-input-button' onClick={handleAdd}>Add</button>
-                        <button className='add-deck-input-button' onClick={handleCreateRequest}>Create Deck</button>
-                        <button className='add-deck-input-button' onClick={()=>navigate('/dashboard')}>Back</button>
+                        <button className='add-deck-button' onClick={handleAdd}>Add</button>
+                        <button className='add-deck-button' onClick={handleCreateRequest}>Create Deck</button>
+                        <button className='add-deck-button' onClick={()=>navigate('/dashboard')}>Back</button>
                     </div>
             </div>
             </div>

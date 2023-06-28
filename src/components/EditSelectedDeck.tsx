@@ -10,6 +10,8 @@ import MergeDeck from "./MergeDecks"
 import AddCardsFromAI from "./AddCardsFromAI"
 import AddCardsFromText from "./AddCardsFromText"
 
+import '../styles/EditSelectedDeck.css'
+
 interface EditSelectedDeckProps {
     user: any
     setUser: React.Dispatch<React.SetStateAction<any>>
@@ -22,7 +24,6 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
     const [popupMessage, setPopupMessage] = useState('')
     const [success, setSuccess] = useState(true)
     const navigate = useNavigate()
-
 
     const handleClick = (n: number) => {
         setRoute(n)
@@ -47,58 +48,61 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
     switch (route) {
         case 0:
             return (
-                <div className="edit-selected-deck-0">
-                    <h2 className="edit-selected-deck-h2">Edit: {deck.name}</h2>
-                    <div className="edit-selected-deck-button-container">
-                        <button className="edit-selected-deck-button" onClick={()=>handleClick(1)}>Add Cards Manually</button>
-                        <button className="edit-selected-deck-button" onClick={()=>handleClick(2)}>Add Cards with AI</button>
-                        <button className="edit-selected-deck-button" onClick={()=>handleClick(3)}>Add Cards from text</button>
-                        <button className="edit-selected-deck-button" onClick={()=>handleClick(4)}>Merge Decks</button>
-                        <button className="edit-selected-deck-button" onClick={()=>handleClick(5)}>Edit Cards</button>
-                        <button className="edit-selected-deck-button" onClick={()=>handleClick(6)}>Delete Deck</button>
-                        <button className="edit-selected-deck-button" onClick={()=>navigate('/dashboard')}>Dashboard</button>
+                <div className="edit-selected-deck-option edit-selected-deck-0">
+                    <div className="edit-selected-deck-container">
+                        <h2 className="edit-selected-deck-h2">Edit: {deck.name}</h2>
+                        <div className="edit-selected-deck-button-container">
+                            <div className="edit-selected-deck-button-2nd-container">
+                                <button className="add-deck-button" onClick={()=>handleClick(1)}>Add Cards Manually</button>
+                                <button className="add-deck-button" onClick={()=>handleClick(2)}>Add Cards with AI</button>
+                            </div>
+                            <div className="edit-selected-deck-button-2nd-container">
+                                <button className="add-deck-button" onClick={()=>handleClick(3)}>Add Cards from text</button>
+                                <button className="add-deck-button" onClick={()=>handleClick(4)}>Merge Decks</button>
+                            </div>
+                            <div className="edit-selected-deck-button-2nd-container last-2nd">
+                                <button className="add-deck-button" onClick={()=>handleClick(5)}>Edit Cards</button>
+                                <button className="add-deck-button" onClick={()=>handleClick(6)}>Delete Deck</button>
+                            </div>
+                            <button className="edit-selected-deck-dashboard-button add-deck-button" onClick={()=>navigate('/dashboard')}>Dashboard</button>
+                        </div>
                     </div>
                 </div>
             )
         case 1:
             return (
-                <div className="edit-selected-deck-1">
+                <div className="edit-selected-deck-option edit-selected-deck-1">
                     <EditAddDeckManual user={user} setUser={setUser} back={()=>handleClick(0)} deckName={deck.name}/>
                 </div>
             )
         case 2:
             return (
-                <div className="edit-selected-deck-2">
+                <div className="edit-selected-deck-option edit-selected-deck-2">
                     <AddCardsFromAI user={user} setUser={setUser} deck={deck} isEdit={true}/>
                 </div>
             )
         case 3:
             return (
-                <div className="edit-selected-deck-3">
+                <div className="edit-selected-deck-option edit-selected-deck-3">
                     <AddCardsFromText user={user} setUser={setUser} deck={deck} isEdit={true}/>
                 </div>
             )
         case 4:
             return (
-                <div className="edit-selected-deck-4">
+                <div className="edit-selected-deck-option edit-selected-deck-4">
                     <MergeDeck user={user} setUser={setUser} deck={deck} />
                 </div>
             )
         case 5:
-
-            const handleUpdateRequest = async () => {
-              
-            }
-
             return (
-                <div className="edit-selected-deck-5">
+                <div className="edit-selected-deck-option edit-selected-deck-5">
                     <h2 className="edit-selected-deck-h2">Edit cards from {deck.name}</h2>
                     <EditSimpleDeckView user={user} setUser={setUser} deck={deck} setRoute={setRoute}/>
                 </div>
             )
         case 6:
             return (
-                <div className="edit-selected-deck-6">
+                <div className="edit-selected-deck-option edit-selected-deck-6">
                     <EditStatusPopup popup={popup} setPopup={setPopup} message={popupMessage} home={success}/>
                     <h2 className="edit-selected-deck-h2">Are you sure you want to Delete {deck.name}?</h2>
                     <button onClick={handleDelete}>Yes</button>

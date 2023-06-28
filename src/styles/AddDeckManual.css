@@ -1,4 +1,3 @@
-/* CSS for the pop-up background */
 .deck-name-popup-background {
     position: fixed;
     top: 0;
@@ -11,19 +10,23 @@
     justify-content: center;
   }
   
-  /* CSS for the pop-up container */
   .deck-name-popup {
-    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 5px solid #fff;
     max-width: 400px;
     width: 100%;
     text-align: center; /* Center the title */
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #101012;
+    background-image:  radial-gradient(#9B00E4 0.5px, transparent 0.5px), radial-gradient(#9B00E4 0.5px, #0a0a35 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
   }
   
   .deck-name-h3 {
-    font-size: 18px;
+    font-size: 1.5rem;
     margin-bottom: 10px;
   }
   
@@ -42,23 +45,20 @@
   }
   
   /* CSS for the button container inside the pop-up */
-  .deck-name-popup-button-container {
+  .deck-name-popup-buttons {
     display: flex;
-    justify-content: center; /* Center the buttons */
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
   
   /* CSS for the button inside the pop-up */
   .deck-name-popup-button {
-    flex-grow: 1;
-    padding: 10px;
-    margin: 10px 5px; /* Adjust the button margin */
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: calc(50% - 10px); /* Adjust the button width calculation */
-    max-width: 200px; /* Set the maximum button width if needed */
   }
   
   .deck-name-popup-button:hover {
@@ -66,18 +66,23 @@
   }
 
 .add-deck-manual-main {
-    background-color: #141315;
-    opacity: 1;
-    background-image:  radial-gradient(#600657 2px, transparent 2px), radial-gradient(#600657 2px, #141315 2px);
-    background-size: 80px 80px;
-    background-position: 0 0,40px 40px;
     min-height: 100vh;
-    padding-top: 50px;
+    height: fit-content;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #101012;
+    background-image:  radial-gradient(#9B00E4 0.5px, transparent 0.5px), radial-gradient(#9B00E4 0.5px, #101012 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
  .add-deck-manual-main textarea {
-  min-width: 300px;
-  width: 40vw;
+  width: 100%;
   height: 150px;
   resize: none;
 }
@@ -85,28 +90,42 @@
 .add-deck-manual-top {
   margin: 0 auto;
   border: 5px solid #fff;
-  width: 40vw;
-  min-width: 320px;
+  width: 60vw;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #fff;
   padding: 40px;
   border-radius: 25px;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #101012;
+  background-image:  radial-gradient(#9B00E4 0.5px, transparent 0.5px), radial-gradient(#9B00E4 0.5px, #0a0a35 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0,10px 10px;
+}
 
-
-  background-color: #9d74c7;
-  opacity: 1;
-  background-image:  linear-gradient(30deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(150deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(30deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(150deg, #232223 12%, transparent 12.5%, transparent 87%, #232223 87.5%, #232223), linear-gradient(60deg, #23222377 25%, transparent 25.5%, transparent 75%, #23222377 75%, #23222377), linear-gradient(60deg, #23222377 25%, transparent 25.5%, transparent 75%, #23222377 75%, #23222377);
-  background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+.add-deck-input-container{
+  width: 100%;
 }
 
 .add-deck-h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .add-deck-manual-h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 0;
+  margin-top: 0;
+  border-bottom: 5px solid #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.add-deck-input-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
 }

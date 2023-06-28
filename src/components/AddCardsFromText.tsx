@@ -1,11 +1,14 @@
 import Deck from "../classes/Deck"
 import Card from "../classes/Card"
 import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 import SimpleDeckView from "./SimpleDeckView"
 import SuccessAndFailPopUp from "./SuccessAndFailPopUp"
 import LoadingCircle from "./LoadingCircle"
+
+import '../styles/AddCardsFromText.css'
 
 interface AddCardsFromTextProps {
     user: any
@@ -25,6 +28,7 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const baseURL = process.env.REACT_APP_URL
+    const navigate = useNavigate()
 
     useEffect(()=>{
 
@@ -114,22 +118,21 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
             {isLoading && (<LoadingCircle />)}
             <div className="add-cards-from-text-container">
                 <h2 className="add-cards-from-text-h2">Generate Flash Cards from Text: {deck.name}</h2>
-                <p>Paste your text below and click generate to make custom flashcards from the text</p>
-                <textarea value={inputValue} onChange={handleInputValueChange}></textarea>
+                <p className="add-cards-from-text-bottom-p">Paste your text below and click generate to make custom flashcards from the text</p>
+                <textarea value={inputValue} onChange={handleInputValueChange} className="add-cards-from-text-textarea"></textarea>
                 <div>
-                    <p>This request will cost {tokenCost} tokens, you have {user.ai_tokens} tokens remaining. Buy more <a>here</a></p>
+                    <p className="add-cards-from-text-bottom-p">This request will cost {tokenCost} tokens, you have {user.ai_tokens} tokens remaining. Buy more <a onClick={()=>navigate('/store')} className="store-link">here</a></p>
                 </div>
                 <div className="add-cards-from-text-button-container">
-                    <button className="add-cards-from-text-button" onClick={handleGenerate}>{cards.length === 0 ? 'Generate' : 'Add more'}</button>
-                    <button className="add-cards-from-text-button">Back</button>
-                    <button className="add-cards-from-text-button" onClick={()=>console.log(cards)}>See cards</button>
+                    <button className="add-deck-button" onClick={handleGenerate}>{cards.length === 0 ? 'Generate' : 'Add more'}</button>
+                    <button className="add-deck-button" onClick={()=>navigate('/add-deck')}>Back</button>
                 </div>
+                {cards.length > 0 && (<div className="add-cards-from-text-bottom-button-container">
+                    <button className="add-deck-button add-cards-from-text-button" onClick={handleSave}>Save Deck</button>
+                </div>)}
             </div>
             {cards.length > 0 && (<div className="add-cards-from-text-deck-view">
-                <h3>Cards in {deck.name}:</h3>
-                <p>Add more cards above or save the deck below</p>
                 <SimpleDeckView deck={cards} setDeck={setCards} />
-                <button onClick={handleSave}>Save Deck</button>
             </div>)}
         </div>
     )

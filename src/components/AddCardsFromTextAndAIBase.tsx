@@ -49,8 +49,8 @@ const AddCardsFromTextAndAIBase: React.FC<AddCardsFromTextAndAIBaseProps> = ({us
                         <div className='deck-name-popup-form'>
                             <input type='text' onChange={handleInputValueChange} value={inputValue}></input>
                             <div className='deck-name-popup-buttons'>
-                                <button onClick={handleCreateDeck} className='deck-name-popup-button'>Create Deck</button>
-                                <button type='button' onClick={() => navigate('/dashboard')} className='deck-name-popup-button'>Back</button>
+                                <button onClick={handleCreateDeck} className='add-deck-button'>Create Deck</button>
+                                <button type='button' onClick={() => navigate('/dashboard')} className='add-deck-button'>Back</button>
                             </div>
                         </div>
                     </div>
