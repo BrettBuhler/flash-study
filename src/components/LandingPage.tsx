@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import Header from './Header'
-import flashCardImage from '../images/flash-card.png'
 import '../styles/LandingPage.css'
 import LandingPageHero from './LandingPageHero'
-import FlashCard from './FlashCard'
 import landingPageDeck from '../services/getLandingPageDeck'
+import bgImg from '../images/1368426.jpg'
 
 const LandingPage = () => {
     const display = landingPageDeck
@@ -16,7 +15,8 @@ const LandingPage = () => {
     }
 
     return (
-        <section className='landing-page-section'>
+        <section className='landing-page-section' style={{backgroundImage: `url(${bgImg})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', width: '100%'}}>
+            <div className='lp-top-spacer'></div>
             <Header />
             <LandingPageHero />
         </section>

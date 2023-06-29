@@ -26,7 +26,7 @@ const SuccessAndFailPopUp: React.FC<SuccessAndFailPopUpProps> = ({success, setSu
             <div className="saf-background">
                 <div className="saf-container">
                     <p className="saf-message">{message ? `${message}`: `Successfully added a new Deck under ${name}. Click continue to return to the Dashboard`}</p>
-                    <button className="saf-button" onClick={handleClick}>Continue</button>
+                    <button className="add-deck-button" onClick={handleClick}>Continue</button>
                 </div>
             </div>
         )
@@ -35,7 +35,7 @@ const SuccessAndFailPopUp: React.FC<SuccessAndFailPopUpProps> = ({success, setSu
             <div className="saf-background">
                 <div className="saf-container">
                     <p className="saf-message">{`Unable to add deck due to server issue. Please try again later`}</p>
-                    <button className="saf-button" onClick={handleClick}>Continue</button>
+                    <button className="add-deck-button" onClick={handleClick}>Continue</button>
                 </div>
             </div>
         )

@@ -164,13 +164,14 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck, is
             </option>
           ))}
         </select>
-        <button type="submit" className="add-cards-from-ai-button">Make Cards</button>
+        <div className="add-cards-from-ai-button-container">
+          <button type="submit" className="add-deck-button wide-button">Make Cards</button>
+          {cards.length > 0 && (<button className="add-deck-button wide-button" type='button' onClick={handleSave}> Save Deck</button>)}
+        </div>
       </form>
-      <button onClick={handleSave}>Save Deck</button>
     </div>
     {cards.length > 0 && (
         <div className="add-cards-from-ai-deck-preview">
-          <h4>{deck.name} preview</h4>
           <SimpleDeckView deck={cards} setDeck={setCards} />
         </div>
     )}

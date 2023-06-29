@@ -1,0 +1,9 @@
+.lp-top-spacer{
+    height: 75px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.landing-page-section{
+    min-height: 100vh;
+}

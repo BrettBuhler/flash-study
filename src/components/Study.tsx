@@ -144,14 +144,17 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
                         <div className='finished-popup-main'>
                             <p className='finished-popup-p'>Congratulations, you finished studying {deck.name}! Study again or return to the dashboard. Remeber that the key to success is spaced repitition.</p>
                             <div className='finished-popup-button-container'>
-                                <button className='finished-popup-button' onClick={()=>setFinished(false)}>Study Again</button>
-                                <button className='finished-popup-button' onClick={handleFinished}>Dashboard</button>
+                                <button className='add-deck-button wide-button' onClick={()=>setFinished(false)}>Study Again</button>
+                                <button className='add-deck-button wide-button' onClick={handleFinished}>Dashboard</button>
                             </div>
                         </div>
                     </div>)}
-                    <h2>WE MADE IT: {deck.name}</h2>
-                    <button onClick={()=>console.log(cards)}>Cards</button>
-                    <FlashCard flashCard={cards[index]} nextCard={()=>nextCard()}/>
+                    <div className='flash-card-holder'>
+                        <FlashCard flashCard={cards[index]} nextCard={()=>nextCard()}/>
+                        <div>
+                            <button className='add-deck-button finish-button'>Finish</button>
+                        </div>
+                    </div>
                 </div>
             )}
         </section>
