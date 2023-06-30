@@ -55,7 +55,21 @@
     padding: 0;
 }
 
-@media (max-height: 650px) {
+.edit-card-pupup-textarea {
+    height: 300px;
+}
+@media (max-height: 1150px) {
+    .edit-card-pupup-textarea {
+        height: 200px !important;
+    }
+}
+@media(max-height: 900px) {
+    .edit-card-pupup-textarea {
+        height: 150px !important;
+    }
+}
+
+@media (max-height: 710px) {
     .edit-card-pupup-textarea {
         height: 100px !important;
     }
@@ -81,4 +95,9 @@
     .edit-card-popup-h3{
         font-size: 1.5rem;
     }
+}
+
+.edit-card-pupup-textarea{
+    width: 100%;
+    resize: none;
 }

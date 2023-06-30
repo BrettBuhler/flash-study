@@ -4,13 +4,16 @@ import { useState, useEffect } from 'react'
 import SuccessAndFailPopUp from "./SuccessAndFailPopUp"
 import axios from "axios"
 
+import '../styles/MergeDecks.css'
+
 interface MergeDeckProps {
     user: any
     setUser: React.Dispatch<React.SetStateAction<any>>
     deck: Deck
+    setRoute: React.Dispatch<React.SetStateAction<any>>
 }
 
-const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck}) => {
+const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck, setRoute}) => {
     const [secondDeck, setSecondDeck] = useState<Deck | undefined>(undefined)
     const [deckChoices, setDeckChoices] = useState<Deck[]>([])
     const [success, setSuccess] = useState(false)
@@ -74,10 +77,16 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck}) => {
     return (
         <div className="merge-decks-main">
             <SuccessAndFailPopUp success={success} setSuccess={setSuccess} fail={fail} setFail={setFail} message={message} name={deck.name} />
-            <h2 className="merge-decks-h2">Select a second deck to merge into {deck.name}</h2>
-            {deckChoices.map((deck1, index)=>(<div>
-                <button onClick={()=>handleClick(index)} className="merge-decks-button">{deck1.name}</button>
-            </div>))}
+            <div className="select-deck-to-merge">
+                <h2 className="merge-decks-h2">Select a second deck to merge into {deck.name}</h2>
+                <div className="merge-decks-button-container">
+                {deckChoices.map((deck1, index)=>(
+                    <button onClick={()=>handleClick(index)} className={`add-deck-button merge-decks-button ${((index) === deckChoices.length - 1 && deckChoices.length % 2 === 1) ? 'long-button' : 'short-button'}`}>{deck1.name}</button>
+                ))}
+                <div className="merge-deck-spacer"></div>
+                <button className="add-deck-button long-button merge-decks-back-button" onClick={()=>setRoute(0)}>Back</button>
+                </div>
+            </div>
             {secondDeck ? <div className="merge-decks-confirm-delete-background">
                 <div className="merge-decks-confirm-container">
                     <h3 className="merge-decks-confirm-h3">Merge {secondDeck.name} into {deck.name}</h3>

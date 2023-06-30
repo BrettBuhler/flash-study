@@ -152,7 +152,7 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
                     <div className='flash-card-holder'>
                         <FlashCard flashCard={cards[index]} nextCard={()=>nextCard()}/>
                         <div>
-                            <button className='add-deck-button finish-button'>Finish</button>
+                            <button className='add-deck-button finish-button' onClick={handleFinished}>Finish</button>
                         </div>
                     </div>
                 </div>

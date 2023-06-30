@@ -65,17 +65,17 @@ const EditEditCardPopup: React.FC<EditEditCardPopupProps> = ({front, setFront, b
                 <h3 className='edit-card-popup-h3'>Edit Card</h3>
                 <div className='edit-card-popup-flexbox'>
                     <div className='edit-card-popup-front'>
-                        <h4 className='edit-card-popup-h4'>Front</h4>
+                        <h4 className='edit-card-popup-h4'>Front:</h4>
                         <textarea className='edit-card-pupup-textarea' id='edit-card-text-front' value={newFront} onChange={handleFrontChange}></textarea>
                     </div>
                     <div className='edit-card-popup-back'>
-                        <h4 className='edit-card-popup-h4'>Back</h4>
+                        <h4 className='edit-card-popup-h4'>Back:</h4>
                         <textarea className='edit-card-pupup-textarea' id='edit-card-text-back' value={newBack} onChange={handleBackChange}></textarea>
                     </div>
                 </div>
                 <div className='edit-card-popup-buttons'>
-                    <button className='edit-card-popup-button' onClick={handleSave}>Save</button>
-                    <button className='edit-card-popup-button' onClick={handleBack}>Back</button>
+                    <button className='add-deck-button' onClick={handleSave}>Save</button>
+                    <button className='add-deck-button' onClick={handleBack}>Back</button>
                 </div>
             </div>
         </div>

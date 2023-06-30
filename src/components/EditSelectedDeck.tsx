@@ -90,7 +90,7 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
         case 4:
             return (
                 <div className="edit-selected-deck-option edit-selected-deck-4">
-                    <MergeDeck user={user} setUser={setUser} deck={deck} />
+                    <MergeDeck user={user} setUser={setUser} deck={deck} setRoute={setRoute}/>
                 </div>
             )
         case 5:
@@ -103,10 +103,14 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
         case 6:
             return (
                 <div className="edit-selected-deck-option edit-selected-deck-6">
-                    <EditStatusPopup popup={popup} setPopup={setPopup} message={popupMessage} home={success}/>
-                    <h2 className="edit-selected-deck-h2">Are you sure you want to Delete {deck.name}?</h2>
-                    <button onClick={handleDelete}>Yes</button>
-                    <button onClick={()=>handleClick(0)}>No</button>
+                    <div className="edit-selected-deck-item">
+                        <EditStatusPopup popup={popup} setPopup={setPopup} message={popupMessage} home={success}/>
+                        <h2 className="edit-selected-deck-h2">Are you sure you want to Delete {deck.name}?</h2>
+                        <div className="edit-selected-deck-item-button-container">
+                            <button onClick={handleDelete} className="add-deck-button">Yes</button>
+                            <button onClick={()=>handleClick(0)} className="add-deck-button">No</button>
+                        </div>
+                    </div>
                 </div>
             )
         default:

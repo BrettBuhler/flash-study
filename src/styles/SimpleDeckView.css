@@ -45,6 +45,7 @@
     opacity: 0.9;
     background-size: 18px 18px;
     background-image:  repeating-linear-gradient(0deg, #2458c7, #2458c7 0.9px, #fffeff 0.9px, #fffeff);
+    z-index: 1 !important;
 }
 
 .simple-deck-item-button-container{

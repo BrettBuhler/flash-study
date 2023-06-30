@@ -5,16 +5,9 @@ import FlashCard from './FlashCard'
 
 import '../styles/LandingPageHero.css'
 import DisplayFlashCard from './DisplayFlashCard'
+import TestCard from './TestCard'
 
 const LandingPageHero: React.FC = () => {
-    const display = landingPageDeck
-    const [deckIndex, setDeckIndex] = useState(0)
-
-
-    const handleNextCard = () => {
-        deckIndex < display.deck.length - 1 ? setDeckIndex(deckIndex + 1) : setDeckIndex(0)
-    }
-
     return (
         <div className="hero-container">
             <div className='hero-item-container'>
@@ -23,11 +16,11 @@ const LandingPageHero: React.FC = () => {
                     <p className="hero-description">Your go-to app for personalized flashcards, AI-generated learning, and progress tracking</p>
                 </div>
                 <div className="hero-right">
-                    <DisplayFlashCard flashCard={display.deck[deckIndex]} nextCard={handleNextCard}/>
+                    <TestCard />
                 </div>
             </div>
         </div>
   )
 }
-
+//<DisplayFlashCard flashCard={display.deck[deckIndex]} nextCard={handleNextCard}/>
 export default LandingPageHero

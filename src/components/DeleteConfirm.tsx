@@ -24,17 +24,20 @@ const DeleteConfirm: React.FC<DeleteConfirmProps> = ({display, setDisplay, onDel
         return null
     }
 
-    const itemLines = itemToDelete.split("\n").map((line, index) => (
-        <p key={`lineItem${index}`} className="item-line">
-          {line}
-        </p>
-    ))
+    const itemLines = itemToDelete.split("Back:").map((line, index) => {
+        return line
+    })
     
     return (
         <div className="delete-confirm-background">
-            <div className="delete-confirm-container">
+            <div className="edit-card-popup-container">
                 <h3 className="delete-confirm-title">Are you sure you want to delete:</h3>
-                <div className="item-to-delete">{itemLines}</div>
+                <div className='delete-confirm-items'>
+                    <div className='edit-card-popup-h4'>Front:</div>
+                    <textarea value={itemLines[0].slice(7)} className='edit-card-pupup-textarea' onChange={()=>null}></textarea>
+                    <div className='edit-card-popup-h4'>Back:</div>
+                    <textarea value={itemLines[1]} className='edit-card-pupup-textarea' onChange={()=>null}></textarea>
+                </div>
                 <div className="delete-confirm-button-container">
                     <button className="add-deck-button" onClick={handleYes}>Yes</button>
                     <button className="add-deck-button" onClick={handleNo}>No</button>

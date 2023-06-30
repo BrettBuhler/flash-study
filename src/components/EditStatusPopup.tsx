@@ -28,7 +28,7 @@ const EditStatusPopup: React.FC<EditStatusPopupProps> = ({popup, setPopup, messa
             <div className="edit-status-popup-background">
                 <div className="edit-status-popup-container">
                     <p className="edit-status-popup-message">{message}</p>
-                    <button className="edit-status-popup-button" onClick={handleClick}>Ok</button>
+                    <button className="add-deck-button" onClick={handleClick}>Ok</button>
                 </div>
 
             </div>

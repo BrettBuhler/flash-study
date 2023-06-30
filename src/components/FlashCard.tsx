@@ -11,7 +11,7 @@ type Card = {
   easy: () => void
   medium: () => void
   hard: () => void
-};
+}
 
 interface FlashCardProps {
   flashCard: Card
@@ -19,12 +19,11 @@ interface FlashCardProps {
 }
 
 const FlashCard: React.FC<FlashCardProps> = ({ flashCard, nextCard }) => {
-  const [flipped, setFlipped] = useState(false);
+  const [flipped, setFlipped] = useState(false)
 
   const flipCard = () => {
     setFlipped(true)
-    console.log(flashCard.lastTry)
-  };
+  }
 
   const handleDifficultyRating = (level: number) => {
     switch(level){
@@ -47,31 +46,37 @@ const FlashCard: React.FC<FlashCardProps> = ({ flashCard, nextCard }) => {
 
   return (
     <div className={`flash-card ${flipped ? 'flipped' : ''}`}>
-      <div className="front">
-        <h3 className='flash-card-h3'>Question</h3>
-        <p className='flash-card-p'>{flashCard.question}</p>
-        <button className="flip-button" onClick={flipCard}>
-          Flip
-        </button>
+      <div className="front" style={{zIndex: flipped ? '0' : '1'}}>
+        <h3 className='flash-card-h3 flash-item'>Question</h3>
+        <textarea value={flashCard.question} className='flash-text-area' onChange={()=>null}>
+
+        </textarea>
+        <div className='difficulty-buttons flash-item'>
+          <button className="add-deck-button flash-card-button" onClick={flipCard}>
+              Flip
+          </button>
+        </div>
       </div>
-      <div className="back">
-        <h3 className='flash-card-h3'>Answer</h3>
-        <p className='flash-card-p'>{flashCard.answer}</p>
-        <div className="difficulty-buttons">
+      <div className="back" style={{zIndex: flipped ? '1' : '0'}}>
+        <h3 className='flash-card-h3 flash-item'>Answer</h3>
+        <textarea value={flashCard.answer} className='flash-text-area' onChange={()=>null}>
+
+        </textarea>
+        <div className="difficulty-buttons flash-item">
           <button
-            className='difficulty-button'
+            className='add-deck-button flash-card-button'
             onClick={() => handleDifficultyRating(2)}
           >
             Easy
           </button>
           <button
-            className='difficulty-button'
+            className='add-deck-button flash-card-button'
             onClick={() => handleDifficultyRating(1)}
           >
             Medium
           </button>
           <button
-            className='difficulty-button'
+            className='add-deck-button flash-card-button'
             onClick={() => handleDifficultyRating(0)}
           >
             Hard
