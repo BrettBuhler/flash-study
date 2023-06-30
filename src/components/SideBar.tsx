@@ -43,50 +43,55 @@ const SideBar: React.FC<SideBarProps> = ({ isOpen, setIsOpen, user}) => {
 
   return (
     <div className={`sidebar-container ${isOpen ? 'sidebar-open' : ''}`} ref={sidebarRef}>
+      <div className='menu-div'>Menu</div>
       <ul className="sidebar-ul">
         {!isDashboardRoute && (
           <li className="sidebar-ul-li">
-            <button onClick={() => navHelper('/dashboard')} className="sidebar-ul-li-button">
+            <button onClick={() => navHelper('/dashboard')} className="add-deck-button">
               Dashboard
             </button>
           </li>
         )}
         <li className="sidebar-ul-li">
-          <button onClick={() => navHelper('/study')} className="sidebar-ul-li-button">
+          <button onClick={() => navHelper('/study')} className="add-deck-button">
             Study
           </button>
         </li>
         <li className="sidebar-ul-li">
-          <button onClick={() => navHelper('/store')} className="sidebar-ul-li-button">
+          <button onClick={() => navHelper('/store')} className="add-deck-button">
             Store
           </button>
         </li>
         <li className="sidebar-ul-li">
-          <button onClick={() => navHelper('/add-deck')} className="sidebar-ul-li-button">
+          <button onClick={() => navHelper('/add-deck')} className="add-deck-button">
             Add Deck
           </button>
         </li>
         <li className="sidebar-ul-li">
-          <button onClick={() => navHelper('/edit-decks')} className="sidebar-ul-li-button">
+          <button onClick={() => navHelper('/edit-decks')} className="add-deck-button">
             Edit Decks
           </button>
         </li>
         <li className="sidebar-ul-li">
-          <button onClick={() => navHelper('/stats')} className="sidebar-ul-li-button">
+          <button onClick={() => navHelper('/stats')} className="add-deck-button">
             Stats
           </button>
         </li>
         <li className="sidebar-ul-li">
-          <button onClick={() => navHelper('/help')} className="sidebar-ul-li-button">
+          <button onClick={() => navHelper('/help')} className="add-deck-button">
             Help
           </button>
         </li>
         <li className="sidebar-ul-li">
-          <button onClick={() => setIsOpen(false)} className="sidebar-ul-li-button">
+          <button onClick={() => setIsOpen(false)} className="add-deck-button">
             Close
           </button>
         </li>
       </ul>
+      <div className='sidebar-bottom-div'></div>
+      <div className='side-bar-logout-button-container'>
+        <button className='add-deck-button'>Logout</button>
+      </div>
     </div>
   );
 };
