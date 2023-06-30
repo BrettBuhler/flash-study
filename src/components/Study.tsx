@@ -118,7 +118,7 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
             <TopBar user={user} setUser={setUser}/>
             {deck === undefined && (
                 <div className='study-select-main'>
-                    <div className='study-select-instructions study-select-title'>
+                    <div className='study-select-title'>
                         Study
                     </div>
                     <div className='study-select-instructions'> 
@@ -144,14 +144,14 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
                         <div className='finished-popup-main'>
                             <p className='finished-popup-p'>Congratulations, you finished studying {deck.name}! Study again or return to the dashboard. Remeber that the key to success is spaced repitition.</p>
                             <div className='finished-popup-button-container'>
-                                <button className='add-deck-button wide-button' onClick={()=>setFinished(false)}>Study Again</button>
-                                <button className='add-deck-button wide-button' onClick={handleFinished}>Dashboard</button>
+                                <button className='add-deck-button wide-button finished-button' onClick={()=>setFinished(false)}>Study Again</button>
+                                <button className='add-deck-button wide-button finished-button' onClick={handleFinished}>Dashboard</button>
                             </div>
                         </div>
                     </div>)}
                     <div className='flash-card-holder'>
                         <FlashCard flashCard={cards[index]} nextCard={()=>nextCard()}/>
-                        <div>
+                        <div className='finish-button-container'>
                             <button className='add-deck-button finish-button' onClick={handleFinished}>Finish</button>
                         </div>
                     </div>

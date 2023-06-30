@@ -3,12 +3,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/SideBar.css';
 
 interface SideBarProps {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen: boolean
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   user: any
+  handleLogout: () => void
 }
 
-const SideBar: React.FC<SideBarProps> = ({ isOpen, setIsOpen, user}) => {
+const SideBar: React.FC<SideBarProps> = ({ isOpen, setIsOpen, user, handleLogout}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isDashboardRoute = location.pathname === '/dashboard';
@@ -90,7 +91,7 @@ const SideBar: React.FC<SideBarProps> = ({ isOpen, setIsOpen, user}) => {
       </ul>
       <div className='sidebar-bottom-div'></div>
       <div className='side-bar-logout-button-container'>
-        <button className='add-deck-button'>Logout</button>
+        <button className='add-deck-button' onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

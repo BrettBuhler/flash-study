@@ -42,7 +42,7 @@ const TopBar: React.FC<TopBarProps> = ({ user, setUser }) => {
         <div className="logout-button" onClick={handleLogout}>
           Logout
         </div>
-        <SideBar isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} user={user}/>
+        <SideBar isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} user={user} handleLogout={handleLogout}/>
       </div>
     </div>
   );
