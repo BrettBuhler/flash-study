@@ -23,11 +23,9 @@ const AddDeck: React.FC<AddDeckProps> = ({ user, setUser }) => {
                     <button className='add-deck-button' onClick={()=>navigate('/add-deck/text')}>Add Deck from Text</button>
                     <button className='add-deck-button' onClick={()=>navigate('/add-deck/ai')}>Add Deck from AI</button>
                 </div>
-            </div>
-            <div className='add-deck-options add-deck-dashboard'>
-              <div className='add-deck-button-container'>
-                <button className='add-deck-button' onClick={()=>navigate('/dashboard')}>Return to Dashboard</button>
-              </div>
+                <div className='add-deck-button-container-dashboard'>
+                    <button className='add-deck-button' onClick={()=>navigate('/dashboard')}>Return to Dashboard</button>
+                </div>
             </div>
         </div>  
     )

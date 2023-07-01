@@ -83,17 +83,20 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck, setRoute}) =>
                 {deckChoices.map((deck1, index)=>(
                     <button onClick={()=>handleClick(index)} className={`add-deck-button merge-decks-button ${((index) === deckChoices.length - 1 && deckChoices.length % 2 === 1) ? 'long-button' : 'short-button'}`}>{deck1.name}</button>
                 ))}
+                {deckChoices.length === 0 && (<div className="merge-decks-confirm-p">
+                    You need at least two decks before you can merge them.
+                </div>)}
                 <div className="merge-deck-spacer"></div>
                 <button className="add-deck-button long-button merge-decks-back-button" onClick={()=>setRoute(0)}>Back</button>
                 </div>
             </div>
             {secondDeck ? <div className="merge-decks-confirm-delete-background">
                 <div className="merge-decks-confirm-container">
-                    <h3 className="merge-decks-confirm-h3">Merge {secondDeck.name} into {deck.name}</h3>
-                    <p className="merge-decks-confirm-p">note: All cards from {secondDeck.name} will be moved into {deck.name} and {secondDeck.name} will be deleted</p>
+                    <h3 className="merge-decks-confirm-h3">Merge <div className="merge-em">{secondDeck.name}</div> into <div className="merge-em">{deck.name}</div>?</h3>
+                    <p className="merge-decks-confirm-p">note: All cards from <div className="merge-em">{secondDeck.name}</div> will be moved into <div className="merge-em">{deck.name}</div> and <div className="merge-em">{secondDeck.name}</div> will be deleted</p>
                     <div className="merge-decks-confirm-button-container">
-                        <button className="merge-decks-confirm-button" onClick={handleMerge}>Merge</button>
-                        <button onClick={()=>setSecondDeck(undefined)} className="merge-decks-confirm-button">Cancel</button>
+                        <button className="add-deck-button" onClick={handleMerge}>Merge</button>
+                        <button onClick={()=>setSecondDeck(undefined)} className="add-deck-button">Cancel</button>
                     </div>
                 </div>
             </div> : null}

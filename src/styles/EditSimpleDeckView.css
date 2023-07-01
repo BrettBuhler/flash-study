@@ -1,0 +1,23 @@
+.simple-deck-view-options{
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   width: 80%;
+   margin-left: 20px;
+   margin-right: 20px;
+   border-bottom: 5px solid #fff;
+   padding-bottom: 20px;
+}
+
+.edit-simple-deck-view-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.simple-deck-view-options-bottom{
+    border-top: 5px solid #fff;
+    padding-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

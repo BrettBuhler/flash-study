@@ -93,7 +93,6 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
                 lastTry: item.lastTry
             }
         })
-        //Change to /api/add before production build: http://localhost:5000/api/add
         try {
             const response = await axios.post(`${process.env.REACT_APP_URL}api/add`, {_id, name, cards})
             if (response.data.user){
@@ -140,9 +139,11 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
                     </div>
                     <div className='add-deck-input-buttons'>
                         <button className='add-deck-button' onClick={handleAdd}>Add</button>
-                        <button className='add-deck-button' onClick={handleCreateRequest}>Create Deck</button>
                         <button className='add-deck-button' onClick={()=>navigate('/dashboard')}>Back</button>
                     </div>
+                    {tempDeck.length > 0 && (<div className='add-deck-input-buttons'>
+                        <button className='add-deck-button wide-button' onClick={handleCreateRequest}>Create Deck</button>
+                    </div>)}
             </div>
             </div>
             <SimpleDeckView deck={tempDeck} setDeck={setTempDeck}/>

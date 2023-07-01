@@ -7,6 +7,7 @@ import axios from "axios"
 import SimpleDeckView from "./SimpleDeckView"
 import SuccessAndFailPopUp from "./SuccessAndFailPopUp"
 import LoadingCircle from "./LoadingCircle"
+import ErrorPopup from "./ErrorPopup";
 
 import '../styles/AddCardsFromText.css'
 
@@ -24,19 +25,23 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
 
     const [success, setSuccess] = useState<boolean>(false)
     const [fail, setFail] = useState<boolean>(false)
+    const [isError, setIsError] = useState<boolean>(false)
     const [message, setMessage] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const baseURL = process.env.REACT_APP_URL
     const navigate = useNavigate()
 
-    useEffect(()=>{
 
-    }, [cards])
     const handleInputValueChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setTokenCost(Math.ceil(event.target.value.length / 30))
+        const getCost = (num: number):number => {
+            return Math.ceil(num / 3)
+        }
+        setTokenCost(getCost(event.target.value.length))
         setInputValue(event.target.value)
     }
+
+
 
     const handleSave = async () => {
         const cardArr = []
@@ -87,6 +92,12 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
         console.log('sending request')
         setIsLoading(true)
         const genCardsFromText = async () => {
+            if (user.ai_tokens < tokenCost){
+                setMessage(`This request will cost ${tokenCost} tokens. Please visit the shop to buy more`)
+                setIsError(true)
+                setIsLoading(false)
+                return null
+              }
             const _id = user._id
             const text = inputValue
             const cost = tokenCost
@@ -115,6 +126,7 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
     return (
         <div className="add-cards-from-text-main">
             <SuccessAndFailPopUp success={success} setSuccess={setSuccess} fail={fail} setFail={setFail} name={deck.name} message={message} />
+            <ErrorPopup error={isError} setError={setIsError} errorMessage={message} setErrorMessage={setMessage}/>
             {isLoading && (<LoadingCircle />)}
             <div className="add-cards-from-text-container">
                 <h2 className="add-cards-from-text-h2">Generate Flash Cards from Text: {deck.name}</h2>
@@ -125,7 +137,7 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
                 </div>
                 <div className="add-cards-from-text-button-container">
                     <button className="add-deck-button" onClick={handleGenerate}>{cards.length === 0 ? 'Generate' : 'Add more'}</button>
-                    <button className="add-deck-button" onClick={()=>navigate('/add-deck')}>Back</button>
+                    <button className="add-deck-button" onClick={()=>navigate('/dashboard')}>Back</button>
                 </div>
                 {cards.length > 0 && (<div className="add-cards-from-text-bottom-button-container">
                     <button className="add-deck-button add-cards-from-text-button" onClick={handleSave}>Save Deck</button>

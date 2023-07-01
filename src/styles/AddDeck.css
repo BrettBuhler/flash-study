@@ -114,3 +114,20 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.add-deck-button-container-dashboard{
+    margin: 0 auto;
+    margin-top: 10px;
+    border-top: 5px solid #fff;
+    padding: 5px;
+    padding-top: 10px;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eds-p{
+    margin-bottom: 10px;
+    text-align: center;
+}

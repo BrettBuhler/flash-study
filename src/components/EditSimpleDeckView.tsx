@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/SimpleDeckView.css';
+import '../styles/EditSimpleDeckView.css'
 import EditEditCardPopup from './EditEditCardPopup';
 import DeleteConfirm from './DeleteConfirm';
 import Deck from '../classes/Deck';
@@ -100,7 +101,11 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
     }
 
     return (
-    <div>
+    <div className='edit-simple-deck-view-main'>
+        <div className='simple-deck-view-options'>
+            <button className='add-deck-button wide-button' onClick={updateDeck}>Save Deck</button>
+            <button className='add-deck-button wide-button' onClick={() => navigate('/dashboard')}>Dashboard</button>
+        </div>
         <div className='simple-deck-container'>
             <EditEditCardPopup front={editFront} back={editBack} setFront={setEditFront} setBack={setEditBack} deck={copyDeck} setDeck={setCopyDeck} editDeck={editDeck} setEditDeck={setEditDeck} editIndex={editIndex}/>
             <DeleteConfirm display={deleteConfirm} setDisplay={setDeleteConfirm} onDelete={deleteItem} indexToDelete={editIndex} itemToDelete={itemToDelete}/>
@@ -111,11 +116,6 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
                         <div className='simple-card'>
                             <div className='simple-text'>{flipedArr[i] === true ? x.question : x.answer}</div>
                             <div className='red-line'></div>
-                            <div className='blue-line-1'></div>
-                            <div className='blue-line-2'></div>
-                            <div className='blue-line-3'></div>
-                            <div className='blue-line-4'></div>
-                            <div className='blue-line-5'></div>
                         </div>
                         <div className='simple-deck-item-button-container'>
                             <button className='simple-deck-button' onClick={()=>handleEdit(x.question, x.answer, i)}>Edit</button>
@@ -127,7 +127,10 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
             })}
     </div>
     <button onClick={updateDeck}>Save Changes</button>
-    <button onClick={()=>console.log(deck.deck.length)}>HI</button>
+    <div className='simple-deck-view-options simple-deck-view-options-bottom'>
+        <button className='add-deck-button wide-button' onClick={updateDeck}>Save Deck</button>
+        <button className='add-deck-button wide-button' onClick={() => navigate('/dashboard')}>Dashboard</button>
+    </div>
     </div>
 )
   }

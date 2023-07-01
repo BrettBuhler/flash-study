@@ -1,6 +1,7 @@
 import Deck from "../classes/Deck";
 import Card from "../classes/Card";
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import SimpleDeckView from "./SimpleDeckView";
 import SuccessAndFailPopUp from "./SuccessAndFailPopUp";
 import ErrorPopup from "./ErrorPopup";
@@ -29,6 +30,8 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck, is
   const [fail, setFail] = useState(false)
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleTopicChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTopic(event.target.value);
@@ -166,8 +169,9 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck, is
         </select>
         <div className="add-cards-from-ai-button-container">
           <button type="submit" className="add-deck-button wide-button">Make Cards</button>
-          {cards.length > 0 && (<button className="add-deck-button wide-button" type='button' onClick={handleSave}> Save Deck</button>)}
+          <button type='button' className="add-deck-button" onClick={()=>navigate('/dashboard')}>Dashboard</button>
         </div>
+          {cards.length > 0 && (<button className="add-deck-button wide-button save-deck" type='button' onClick={handleSave}> Save Deck</button>)}
       </form>
     </div>
     {cards.length > 0 && (

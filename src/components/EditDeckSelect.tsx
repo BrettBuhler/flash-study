@@ -43,6 +43,9 @@ const EditDeckSelect: React.FC<EditDeckSelectProps> = ({ decks, selectedIndex, s
             <div className="edit-deck-select-container">
                 <h2 className="edit-deck-select-title">Select a Deck to Edit</h2>
                 <div className="edit-deck-select-deck-item-container">
+                    {decks.length === 0 && (<div className="merge-decks-confirm-p eds-p">
+                        First You need to add a deck
+                    </div>)}
                     <select className="deck-select">
                     <option value="">Select a deck</option>
                     {decks.map((deck, index) => (

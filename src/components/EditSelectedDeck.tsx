@@ -96,7 +96,7 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
         case 5:
             return (
                 <div className="edit-selected-deck-option edit-selected-deck-5">
-                    <h2 className="edit-selected-deck-h2">Edit cards from {deck.name}</h2>
+                    <h2 className="edit-selected-deck-h2 edit-selected-header">Edit cards from {deck.name}</h2>
                     <EditSimpleDeckView user={user} setUser={setUser} deck={deck} setRoute={setRoute}/>
                 </div>
             )

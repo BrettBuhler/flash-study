@@ -83,3 +83,10 @@
 .edit-selected-deck-dashboard-button{
     max-width: none;
 }
+
+.edit-selected-header{
+    margin-top: 75px;
+    width: 80%;
+    margin-left: 20px;
+    margin-right: 20px;
+}

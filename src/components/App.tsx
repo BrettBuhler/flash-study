@@ -15,6 +15,7 @@ import Study from './Study'
 import Stats from './Stats'
 import Store from './Store'
 import BuyTokens from './BuyTokens'
+import HelpPage from './HelpPage'
 
 
 const App = () => {
@@ -76,7 +77,7 @@ const App = () => {
         />
         <Route path='/help'
           element = {
-              <div>help</div>
+              <HelpPage user={user} setUser={setUser}/>
           }
         />
         <Route path='/stats'
