@@ -21,3 +21,24 @@
     margin-top: 10px;
     margin-bottom: 30px;
 }
+
+.deck-length-0-container{
+    color: #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.deck-length-0-button-container{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.deck-length-0-h3{
+    font-size: 2rem;
+}
+
+.deck-length-0-p{
+    font-size: 1.4rem;
+}

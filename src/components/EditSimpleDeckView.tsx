@@ -66,7 +66,6 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
         setFlipedArr(tempArr)
         console.log(flipedArr)
     }
-    //TODO UPDATE DECK
     const updateDeck = async () => {
         try{
             const _id = user._id
@@ -87,15 +86,19 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
         }
     }
 
-    if (deck.deck.length === 0){
+    if (deck.deck.length === 0 || copyDeck.length === 0){
         return (
             <div className='deck-length-0-container'>
+                <SuccessAndFailPopUp success={success} setSuccess={setSuccess} fail={fail} setFail={setFail} message={message} name={deck.name}/>
                 <h3 className='deck-length-0-h3'>No cards in {deck.name}</h3>
                 <p className='deck-length-0-p'>Return to the Dashboard, or add cards to {deck.name} from the Edit Deck menu.</p>
                 <div className='deck-length-0-button-container'>
-                    <button className='deck-length-0-button' onClick={()=>navigate('/dashboard')}>Dashboard</button>
-                    <button className='deck-length-0-button' onClick={()=>setRoute(0)}>Edit Deck</button>
+                    <button className='add-deck-button' onClick={()=>navigate('/dashboard')}>Dashboard</button>
+                    <button className='add-deck-button' onClick={()=>setRoute(0)}>Edit Deck</button>
                 </div>
+                {deck.deck.length !== 0 && (<div className='deck-length-0-button-container'>
+                    <button className='add-deck-button wide-button' onClick={updateDeck}>Save Deck</button>
+                </div>)}
             </div>
         )
     }
@@ -126,11 +129,11 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
                 )
             })}
     </div>
-    <button onClick={updateDeck}>Save Changes</button>
     <div className='simple-deck-view-options simple-deck-view-options-bottom'>
         <button className='add-deck-button wide-button' onClick={updateDeck}>Save Deck</button>
         <button className='add-deck-button wide-button' onClick={() => navigate('/dashboard')}>Dashboard</button>
     </div>
+
     </div>
 )
   }
