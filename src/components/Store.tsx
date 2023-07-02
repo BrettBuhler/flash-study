@@ -108,10 +108,9 @@ Supercharge your learning with our AI tokens! Build decks effortlessly and extra
                 </div>
             </div>
             {store !== undefined && (<StoreItems items={storeGen(store)} setSelectedItem={setSelectedItem} />)}
-            <button onClick={() => addTokens(100000)}>Add 100,000 tokens</button>
-            <button onClick={()=>console.log(store)}>GET STORE</button>
-            <button onClick={()=>console.log(selectedItem)}>GET ITEM</button>
-            
+            <div className='store-buttons-container'>
+                <button className='add-deck-button wide-button' onClick={()=>navigate('/dashboard')}>Dashboard</button>
+            </div>
         </div>
     )
 }

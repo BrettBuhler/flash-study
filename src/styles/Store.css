@@ -56,9 +56,22 @@
   font-weight: bold;
 }
 
+.store-buttons-container{
+  width: 670px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
 @media (max-width: 768px) {
   .store-item-token {
     width: 300px;
+  }
+  .store-buttons-container{
+    width: 320px;
   }
   .store-item-100k, .store-item-price {
     font-size: 1.5rem;
@@ -80,3 +93,5 @@
   text-align: center;
 }
 }
+
+

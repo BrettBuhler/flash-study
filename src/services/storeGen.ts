@@ -5,8 +5,9 @@ import nodeImg from '../images/icons8-node-js-100.png'
 import jsImg from '../images/icons8-javascript-1001.png'
 import bioImg from '../images/icons8-biology-96.png'
 import physicsImg from '../images/icons8-physics-100.png'
+import oneHundredDevsImg from '../images/icons8-100-100.png'
 
-const stash = [reactImg, nodeImg, jsImg, bioImg, physicsImg]
+const stash = [reactImg, nodeImg, jsImg, bioImg, physicsImg, oneHundredDevsImg]
 
 const storeGen = (items: Deck[]):Item[] => {
     let j = 0
