@@ -27,7 +27,6 @@ const SimpleDeckView: React.FC<SimpleDeckViewProps> = ({ deck, setDeck }) => {
     },[deck])
 
     const handleEdit = (front: string, back: string, index: number) => {
-        console.log(flipedArr)
         setEditFront(front)
         setEditBack(back)
         setEditIndex(index)
@@ -62,7 +61,6 @@ const SimpleDeckView: React.FC<SimpleDeckViewProps> = ({ deck, setDeck }) => {
             tempArr.push(newBool)
             tempArr = tempArr.concat(flipedArr.slice(num+1))
             setFlipedArr(tempArr)
-            console.log(flipedArr)
         }
         return (
         <div className='simple-deck-main'>

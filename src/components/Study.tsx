@@ -71,7 +71,6 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
                 }
             }
             if (tempDeck !== false) {
-                console.log('tdeck',tempDeck)
                 setDeck(tempDeck)
             }
         } else {

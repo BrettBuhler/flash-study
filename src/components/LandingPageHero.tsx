@@ -16,8 +16,6 @@ const LandingPageHero: React.FC = () => {
         }
 
         window.addEventListener('resize', handleResize)
-        console.log(screenWidth)
-        console.log(screenWidth > 1)
         return () => {
             window.removeEventListener('resize', handleResize)
         }
@@ -36,5 +34,5 @@ const LandingPageHero: React.FC = () => {
         </div>
   )
 }
-//<DisplayFlashCard flashCard={display.deck[deckIndex]} nextCard={handleNextCard}/>
+
 export default LandingPageHero

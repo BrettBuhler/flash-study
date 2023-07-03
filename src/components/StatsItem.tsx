@@ -7,10 +7,10 @@ interface StatsItemProps {
   name: string;
   progress: number;
   lastTry: Date;
-  key: string;
+  keyProp: string;
 }
 
-const StatsItem: React.FC<StatsItemProps> = ({ name, progress, lastTry, key }) => {
+const StatsItem: React.FC<StatsItemProps> = ({ name, progress, lastTry, keyProp }) => {
 
     const getProgressBarColor = (progress: number): string => {
         if (progress < 0.5) {
@@ -40,7 +40,7 @@ const StatsItem: React.FC<StatsItemProps> = ({ name, progress, lastTry, key }) =
     const [lastStudied, setLastStudied] = useState(getDaysSinceLastStudied(lastTry))
 
   return (
-    <div className="stats-item" key={key}>
+    <div className="stats-item" key={keyProp}>
         <div style={progressBarStyle}> </div>
         <div className='stats-item-text-container'>
             <div className='stats-item-text'>{name}</div>

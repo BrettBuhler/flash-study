@@ -6,8 +6,6 @@ import TopBar from './TopBar'
 
 import '../styles/Dashboard.css'
 
-import getDecks from '../services/getDecks'
-
 interface DashboardProps {
     user: any
     setUser: React.Dispatch<React.SetStateAction<{}>>

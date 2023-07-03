@@ -50,7 +50,9 @@ const Stats: React.FC<StatsProps> = ({user, setUser}) => {
                 <StatsItemHeader/>
                 {decks.map((deck: Deck) => {
                     return (
-                        <StatsItem name={deck.name} progress={getDeckMastery(deck)} lastTry={new Date()} key={`KEY_${deck.name}`}/>
+                        <div key = {`someKey${deck.name}`}>
+                            <StatsItem name={deck.name} progress={getDeckMastery(deck)} lastTry={new Date()} keyProp={`KEY_${deck.name}`}/>
+                        </div>
                     )
                 })}
                 <div className="stats-footer"></div>

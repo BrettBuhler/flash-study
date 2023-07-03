@@ -104,7 +104,6 @@ const AddCardsFromAI: React.FC<AddCardsFromAIProps> = ({ user, setUser, deck, is
         const number = num
         const response = await axios.post(`${process.env.REACT_APP_URL}api/cardsfromai`, {_id, number, topic, subTopic})
         if (response.data.user){
-          console.log(response.data.cards)
           if (response.data.cards){
             let tempCards = []
             for (let i = 0; i < response.data.cards.length; i++){

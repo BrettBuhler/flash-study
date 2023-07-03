@@ -34,7 +34,6 @@ const LogIn:React.FC<LogInProps> = ({setUser}) => {
     try{
         //change to /api/login before sending build to production: http://localhost:5000/api/login
         const response = await axios.post(`${process.env.REACT_APP_URL}api/login`, {email: email, password: password})
-        console.log(response.data)
         if (response.data.user){
             setUser(response.data.user)
             navigate('/dashboard')

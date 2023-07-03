@@ -36,13 +36,9 @@ const StorePurchase: React.FC<StorePurchaseProps> = ({user, setUser, item, setIt
                 if (deck?.deck){
                     const tempCards = deck.deck.map(card => new Card(card.question, card.answer))
                     const response = await axios.post(`${process.env.REACT_APP_URL}api/add`, {_id: _id, name: name, cards: tempCards})
-                    console.log(deck)
-                    console.log(name, _id)
-                    console.log(response.data)
                     if (response.data.user){
                         setUser(response.data.user)
                         setSuccess(true)
-                        console.log('nameflag', nameFlag)
                         if (!nameFlag) {
                             setMessage(`${item.name} was already saved under your decks so your new deck was saved under ${name}. Returning to Dashboard`)
                         } else {
