@@ -7,7 +7,10 @@ import axios from "axios"
 import SimpleDeckView from "./SimpleDeckView"
 import SuccessAndFailPopUp from "./SuccessAndFailPopUp"
 import LoadingCircle from "./LoadingCircle"
+import Loading from "./Loading"
 import ErrorPopup from "./ErrorPopup";
+
+import arrGen from "../services/arrGen"
 
 import '../styles/AddCardsFromText.css'
 
@@ -28,16 +31,22 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
     const [isError, setIsError] = useState<boolean>(false)
     const [message, setMessage] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [progress, setProgress] = useState(0)
 
     const baseURL = process.env.REACT_APP_URL
     const navigate = useNavigate()
 
+    const generateRequestArr = () => {
+        const requestArr = arrGen(inputValue)
+        console.log(requestArr)
+    }
+
 
     const handleInputValueChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const getCost = (num: number):number => {
-            return Math.ceil(num / 3)
+        const getCost = (str: string):number => {
+            return arrGen(str).length * 1000
         }
-        setTokenCost(getCost(event.target.value.length))
+        setTokenCost(getCost(event.target.value))
         setInputValue(event.target.value)
     }
 
@@ -101,33 +110,35 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
             const _id = user._id
             const text = inputValue
             const cost = tokenCost
-            const genCardsResponse = await axios.post(`${baseURL}api/cardsfromtextfunction`, {_id, text, cost})
-            if (genCardsResponse.data.user){
-                console.log(genCardsResponse.data.data)
+            const textArr = arrGen(text)
+            let tempCards = []
+            for (let i = 0; i < textArr.length; i++) {
+                console.log(`sending request ${i+1} of ${textArr.length}`)
+                const genCardsResponse = await axios.post(`${baseURL}api/cardsfromtextfunction`, {_id: _id, text: textArr[i], cost: 1000})
                 const cardRes = genCardsResponse.data.cards
-                const tempCards = []
-
-                for (let i = 0; i < cardRes.length; i++){
-                    console.log(`Front: ${cardRes[i].question}, Back: ${cardRes[i].answer}`)
-                    tempCards.push([cardRes[i].question, cardRes[i].answer])
+                setProgress((i+1) / textArr.length)
+                for (let j = 0; j < cardRes.length; j++){
+                    tempCards.push([cardRes[j].question, cardRes[j].answer])
                 }
-                setUser(genCardsResponse.data.user)
-                setCards([...cards].concat([...tempCards]))
-                setIsLoading(false)
-                setInputValue('')
-                setTokenCost(0)
+                if (i === textArr.length - 1) {
+                    setUser(genCardsResponse.data.user)
+                }
             }
+            setCards([...cards].concat([...tempCards]))
+            setIsLoading(false)
+            setInputValue('')
+            setTokenCost(0)
+            setProgress(0)
         }
         const response = await genCardsFromText()
-        console.log('here is the res:')
-        console.log(response)
     }
 
     return (
         <div className="add-cards-from-text-main">
+            {isLoading && (<Loading progress={progress}/>)}
+            {isLoading && (<LoadingCircle />)}
             <SuccessAndFailPopUp success={success} setSuccess={setSuccess} fail={fail} setFail={setFail} name={deck.name} message={message} />
             <ErrorPopup error={isError} setError={setIsError} errorMessage={message} setErrorMessage={setMessage}/>
-            {isLoading && (<LoadingCircle />)}
             <div className="add-cards-from-text-container">
                 <h2 className="add-cards-from-text-h2">Generate Flash Cards from Text: {deck.name}</h2>
                 <p className="add-cards-from-text-bottom-p">Paste your text below and click generate to make custom flashcards from the text</p>

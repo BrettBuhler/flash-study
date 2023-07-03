@@ -10,6 +10,16 @@
     align-items: center;
     z-index: 9999; 
   }
+
+  .progress-num{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.5rem;
+    z-index: 99999;
+  }
   
   .loading-circle {
     display: inline-block;
