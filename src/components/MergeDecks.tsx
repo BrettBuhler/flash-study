@@ -21,13 +21,12 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck, setRoute}) =>
     const [message, setMessage] = useState('')
 
     useEffect(()=>{
-        if (deckChoices.length == 0){
+        if (deckChoices.length === 0){
             let tempDecks = []
             for (let i = 0; i < user.decks.length; i++){
                 if (deck.name !== user.decks[i].name){
                     let cards = []
                     for (let j = 0; j < user.decks[i].cards.length; j++){
-                        console.log('j=',j)
                         let newCard = new Card(user.decks[i].cards[j].question, user.decks[i].cards[j].answer, user.decks[i].cards[j].tries, user.decks[i].cards[j].lastTry)
                         cards.push(newCard)
                     }
@@ -40,7 +39,6 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck, setRoute}) =>
     },[])
 
     const handleClick = (index: number) => {
-        console.log(deckChoices[index].deck)
         setSecondDeck(deckChoices[index])
     }
 
@@ -52,7 +50,6 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck, setRoute}) =>
                 const _id = user._id
                 let name = deck.name
                 const cards = newDeck
-                console.log(_id, name, cards)
                 let updateResponse = await axios.put(`${process.env.REACT_APP_URL}api/updatedeck`,{ _id, name, cards })
                 if (updateResponse.data.user){
                     name = secondDeck.name
@@ -81,7 +78,7 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck, setRoute}) =>
                 <h2 className="merge-decks-h2">Select a second deck to merge into {deck.name}</h2>
                 <div className="merge-decks-button-container">
                 {deckChoices.map((deck1, index)=>(
-                    <button onClick={()=>handleClick(index)} className={`add-deck-button merge-decks-button ${((index) === deckChoices.length - 1 && deckChoices.length % 2 === 1) ? 'long-button' : 'short-button'}`}>{deck1.name}</button>
+                    <button key={`deck${deck1.name}${index}`} onClick={()=>handleClick(index)} className={`add-deck-button merge-decks-button ${((index) === deckChoices.length - 1 && deckChoices.length % 2 === 1) ? 'long-button' : 'short-button'}`}>{deck1.name}</button>
                 ))}
                 {deckChoices.length === 0 && (<div className="merge-decks-confirm-p">
                     You need at least two decks before you can merge them.
@@ -93,7 +90,7 @@ const MergeDeck: React.FC<MergeDeckProps> = ({user, setUser, deck, setRoute}) =>
             {secondDeck ? <div className="merge-decks-confirm-delete-background">
                 <div className="merge-decks-confirm-container">
                     <h3 className="merge-decks-confirm-h3">Merge <div className="merge-em">{secondDeck.name}</div> into <div className="merge-em">{deck.name}</div>?</h3>
-                    <p className="merge-decks-confirm-p">note: All cards from <div className="merge-em">{secondDeck.name}</div> will be moved into <div className="merge-em">{deck.name}</div> and <div className="merge-em">{secondDeck.name}</div> will be deleted</p>
+                    <div className="merge-decks-confirm-p">note: All cards from <div className="merge-em">{secondDeck.name}</div> will be moved into <div className="merge-em">{deck.name}</div> and <div className="merge-em">{secondDeck.name}</div> will be deleted</div>
                     <div className="merge-decks-confirm-button-container">
                         <button className="add-deck-button" onClick={handleMerge}>Merge</button>
                         <button onClick={()=>setSecondDeck(undefined)} className="add-deck-button">Cancel</button>

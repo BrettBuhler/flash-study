@@ -32,7 +32,6 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
     const navigate = useNavigate()
 
     const handleEdit = (front: string, back: string, index: number) => {
-        console.log(flipedArr)
         setEditFront(front)
         setEditBack(back)
         setEditIndex(index)
@@ -64,7 +63,6 @@ const EditSimpleDeckView: React.FC<EditSimpleDeckViewProps> = ({ user, setUser, 
         tempArr.push(newBool)
         tempArr = tempArr.concat(flipedArr.slice(num+1))
         setFlipedArr(tempArr)
-        console.log(flipedArr)
     }
     const updateDeck = async () => {
         try{

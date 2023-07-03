@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import FlashCard from './FlashCard'
 import landingPageDeck from '../services/getLandingPageDeck'
 
-const TestCard = ({}) => {
+const TestCard = () => {
     const [cardHeight, setCardHeight] = useState<number | undefined>(undefined)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [deckIndex, setDeckIndex] = useState(0)

@@ -65,7 +65,7 @@ const Study: React.FC<StudyProps> = ({user, setUser}) => {
         if (selectOption !== ''){
             let tempDeck: boolean | Deck = false
             for (let i = 0; i < deckArr.length; i++){
-                if (deckArr[i].name == selectOption){
+                if (deckArr[i].name === selectOption){
                     tempDeck = new Deck(deckArr[i].name, deckArr[i].cards)
                     break
                 }

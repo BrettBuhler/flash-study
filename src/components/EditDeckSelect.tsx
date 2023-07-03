@@ -49,7 +49,7 @@ const EditDeckSelect: React.FC<EditDeckSelectProps> = ({ decks, selectedIndex, s
                     <select className="deck-select">
                     <option value="">Select a deck</option>
                     {decks.map((deck, index) => (
-                        <option key={index} value={index}>
+                        <option key={`${index}KEY`} value={index}>
                         {deck.name}
                         </option>
                     ))}
@@ -57,7 +57,7 @@ const EditDeckSelect: React.FC<EditDeckSelectProps> = ({ decks, selectedIndex, s
                 </div>
                 <div className="edit-deck-select-buttons">
                     <button onClick={handleEditClick} className="add-deck-button">Edit</button>
-                    <button onClick={()=>navigate('/dashboard')} className="add-deck-button">Back</button>
+                    <button onClick={()=>navigate('/dashboard')} className="add-deck-button wide-button">Back</button>
                 </div>
             </div>
         </div>

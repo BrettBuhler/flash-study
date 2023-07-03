@@ -1,6 +1,6 @@
 import Deck from "../classes/Deck"
 import Card from "../classes/Card"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
@@ -35,12 +35,6 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
 
     const baseURL = process.env.REACT_APP_URL
     const navigate = useNavigate()
-
-    const generateRequestArr = () => {
-        const requestArr = arrGen(inputValue)
-        console.log(requestArr)
-    }
-
 
     const handleInputValueChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const getCost = (str: string):number => {
@@ -151,7 +145,7 @@ const AddCardsFromText: React.FC<AddCardsFromTextProps> = ({user, setUser, deck,
                     <button className="add-deck-button" onClick={()=>navigate('/dashboard')}>Back</button>
                 </div>
                 {cards.length > 0 && (<div className="add-cards-from-text-bottom-button-container">
-                    <button className="add-deck-button add-cards-from-text-button" onClick={handleSave}>Save Deck</button>
+                    <button className="add-deck-button wide-button" onClick={handleSave}>Save Deck</button>
                 </div>)}
             </div>
             {cards.length > 0 && (<div className="add-cards-from-text-deck-view">

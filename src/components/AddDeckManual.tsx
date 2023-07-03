@@ -82,7 +82,6 @@ const AddDeckManual: React.FC<AddDeckManualProps> = ({ user, setUser }) => {
             deckArray.push(cardGen(tempDeck[i][0], tempDeck[i][1]))
         }
         let newDeck = deckGen(deckName, deckArray)
-        console.log(newDeck)
         const _id = user._id
         const name = newDeck.name
         const cards = newDeck.deck.map(item=>{

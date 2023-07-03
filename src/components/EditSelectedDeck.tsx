@@ -64,7 +64,7 @@ const EditSelectedDeck: React.FC<EditSelectedDeckProps> = ({user, setUser, deck}
                                 <button className="add-deck-button" onClick={()=>handleClick(5)}>Edit Cards</button>
                                 <button className="add-deck-button" onClick={()=>handleClick(6)}>Delete Deck</button>
                             </div>
-                            <button className="edit-selected-deck-dashboard-button add-deck-button" onClick={()=>navigate('/dashboard')}>Dashboard</button>
+                            <button className="add-deck-button wide-button" onClick={()=>navigate('/dashboard')}>Dashboard</button>
                         </div>
                     </div>
                 </div>

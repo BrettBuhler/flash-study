@@ -1,7 +1,7 @@
 import '../styles/StatsItemHeader.css'
 
 
-const StatsItemHeader = ({}) => {
+const StatsItemHeader = () => {
     return (
         <div className="stats-item-header">
             <div className="stats-item-header-label">Deck</div>

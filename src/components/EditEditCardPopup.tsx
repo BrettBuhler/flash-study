@@ -32,13 +32,10 @@ const EditEditCardPopup: React.FC<EditEditCardPopupProps> = ({front, setFront, b
     }
 
     const handleSave = () => {
-        console.log('edit index', editIndex)
         const left = deck.slice(0,editIndex)
         const right = deck.slice(editIndex + 1)
         const newCard = cardGen(newFront, newBack)
         const newDeck = [...left, newCard, ...right]
-        console.log('old', deck)
-        console.log('new',newDeck)
 
         setDeck(newDeck)
         setFront('')

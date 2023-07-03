@@ -67,7 +67,9 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
         navigate('/store/buytokens')
     }
 
-    const addTokens = async (tokens: number) => {
+    /*
+    WebHook from Stripe currently adds tokens, Use the function below to add tokens from front end if required in futrue updates
+        const addTokens = async (tokens: number) => {
         try {
             const _id = user._id
             const number = tokens
@@ -84,6 +86,7 @@ const Store: React.FC<StoreProps> = ({user, setUser}) => {
             console.error(error)
         }
     }
+    */
     return (
         <div className='store-main'>
             <TopBar user={user} setUser={setUser} />

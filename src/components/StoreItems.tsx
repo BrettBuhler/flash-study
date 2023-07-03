@@ -1,5 +1,4 @@
 import Item from "../classes/Item"
-import Deck from "../classes/Deck"
 
 import '../styles/StoreItems.css'
 
