@@ -22,27 +22,35 @@
   border-radius: 25px;
 }
 
-@media only screen and (max-width: 620px) {
-  .dashboard-welcome {
-    max-width: 315px;
-  }
-}
   
   .dashboard-welcome h2 {
     text-align: center;
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: bold;
     color: #fff;
   }
+
   
   .dashboard-welcome p {
-    font-size: 16px;
+    font-size: 1.4rem;
     color: #fff;
     line-height: 1.5;
     margin-bottom: 5px;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  @media only screen and (max-width: 620px) {
+    .dashboard-welcome {
+      max-width: 315px;
+    }
+    .dashboard-welcome h2 {
+      font-size: 1.4rem;
+    }
+    .dashboard-welcome p {
+      font-size: 1rem;
+    }
   }
   
   .dashboard-menu {
