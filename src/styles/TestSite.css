@@ -1,0 +1,8 @@
+.test-site-button {
+    color: white !important;
+}
+
+.test-site-button:hover {
+    color: black !important;
+    border: 2px solid black;
+}

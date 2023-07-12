@@ -24,7 +24,9 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path='/' Component={LandingPage} />
+        <Route path='/' element={
+          <LandingPage setUser={setUser} />
+        }/>
         <Route path='/dashboard'
           element = {
             <Dashboard user={user} setUser={setUser} />

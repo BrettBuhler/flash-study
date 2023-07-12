@@ -3,9 +3,14 @@ import Header from './Header'
 import '../styles/LandingPage.css'
 import LandingPageHero from './LandingPageHero'
 import landingPageDeck from '../services/getLandingPageDeck'
+import TestSite from './TestSite'
 import bgImg from '../images/1368426.jpg'
 
-const LandingPage = () => {
+interface LaningPageProps {
+    setUser: any
+}
+
+const LandingPage: React.FC<LaningPageProps> = ({setUser}) => {
     const display = landingPageDeck
     const [deckIndex, setDeckIndex] = useState(0)
 
@@ -19,6 +24,7 @@ const LandingPage = () => {
             <div className='lp-top-spacer'></div>
             <Header />
             <LandingPageHero />
+            <TestSite setUser={setUser} />
         </section>
     )
 }
