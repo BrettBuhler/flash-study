@@ -59,7 +59,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ flashCard, nextCard }) => {
       </div>
       <div className="back" style={{zIndex: flipped ? '1' : '0'}}>
         <h3 className='flash-card-h3 flash-item'>Answer</h3>
-        <textarea value={flashCard.answer} className='flash-text-area' onChange={()=>null}>
+        <textarea value={flashCard.answer} className={`flash-text-area${!flipped ? ' flipped-text-area' : ''}`} onChange={()=>null}>
 
         </textarea>
         <div className="difficulty-buttons flash-item">

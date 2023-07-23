@@ -89,6 +89,12 @@
   overflow-y: auto;
 }
 
+.flipped-text-area {
+  color: transparent;
+}
+
+
+
 @media (max-width: 900px){
   .flash-text-area {
     font-size: 18px;
